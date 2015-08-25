@@ -376,6 +376,27 @@ recorddefs = {
         # 97 = Fin. Compensation
         ]
         
+    # -------------------------------------------------------------------------
+    #              TOD Delivery condition, transport
+    # -------------------------------------------------------------------------
+    'TOD': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # TOD
+        
+        ['CODCONS', 'M', (3, 3), 'AN'], 
+        # 2 = Delivery condition
+        # 3 = Cost anc delivery condition
+
+        ['CODCONT', 'M', (3, 3), 'AN'], 
+        # Transport costs to:
+        # PP = sender
+        # CC = receiver
+
+        ['CODCOND', 'C', (3, 3), 'AN'], # INCOTERMS
+        ['DESCOND1', 'M', (70, 70), 'AN'], 
+        ['DESCOND2', 'M', (70, 70), 'AN'], 
+        ]
+        
+        
         
         
         
