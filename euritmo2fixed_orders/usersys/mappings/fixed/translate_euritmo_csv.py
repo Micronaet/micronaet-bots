@@ -11,6 +11,7 @@ def main(inn, out):
     '''
     out.put(
         {'BOTSID': 'HEA', 'SENDER': inn.ta_info['frompartner']}) # get sender from ta_info (sender comes from interchange, via QUERIES in edifact grammar)
+    '''
     out.put(
         {'BOTSID': 'HEA', 'RECEIVER': inn.ta_info['topartner']})
     out.put(
@@ -60,4 +61,4 @@ def main(inn, out):
             {'BOTSID': 'IMD', 'C273.7008#1': None})})
         lou.put({'BOTSID': 'LIN', 'QUANTITY': lin.get(
             {'BOTSID':'LIN'}, 
-            {'BOTSID': 'QTY', 'C186.6063': '21', 'C186.6060': None})})
+            {'BOTSID': 'QTY', 'C186.6063': '21', 'C186.6060': None})})'''
