@@ -275,6 +275,27 @@ recorddefs = {
         ['Filler', 'C', (86, 86), 'AN'], # Not used
         ]
         
+    # -------------------------------------------------------------------------
+    #                    DTM Delivery date information
+    # -------------------------------------------------------------------------
+    'DTM': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # DTM
+        ['DATACONS', 'M', (8, 8), 'AN'], # CCYYMMDD
+        ['ORACONS', 'C', (4, 4), 'AN'], # HHMM
+        
+        ['TIPODATAC', 'M', (3, 3), 'AN'],
+        # 002 = date / time delivery requested
+        # 064 = no delivery before date-hour
+        # 069 = mandatory date-hour delivery granted
+        
+        ['DATACON2', 'M', (8, 8), 'AN'], # CCYYMMDD
+        ['ORACON2', 'C', (4, 4), 'AN'], # HHMM
+        
+        ['TIPODATA2', 'M', (3, 3), 'AN'],
+        # 063 = no delivery after date-hour
+        # only present if TIPODATAC = 064
+        
+
 
 
     # 16.3, 'N' >> 
