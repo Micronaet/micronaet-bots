@@ -5,7 +5,6 @@ syntax = {
     'charset': 'us-ascii',
     }
 
-# structure: the sequence of the records, and min/max repeats. Records can be 'nested'
 structure = [
     {ID: 'BGM', MIN: 1, MAX: 10000, LEVEL: [
         {ID: 'RFF', MIN: 0, MAX: 1},
@@ -38,10 +37,16 @@ structure = [
         ]},
     ]
 
-# the fields in each record. 'BOTSID' is the record tag.
+# TODO the fields in each record. 'BOTSID' is the record tag?
 recorddefs = {
+    # NOTA:
+    # In caso di “ordine normale” blank o 105 in TIPORD i qualificatori da 
+    # usare 
+    # nel documento EDI nel DE 1001(BGM) sono differenti tra D90.1 e D96.a:
+    # D90.1 : DE 1001 =105 ordine (come da manuale EDI D90.1)
+    # D96.a: DE 1001 = 220 ordine (come da manuale EDI D96.a)
     'BGM': [ # header record
-        ['TIPOREC', 'M', (3, 3), 'AN'], # BOTSID
+        ['TIPOREC', 'M', (3, 3), 'AN'], # BGM (BOTSID)
             
         # ID-EDI-MITT:
         ['ID-EDI-MITT-1', 'M', (35, 35), 'AN'], # ID sender Piva o EAN/UCC
@@ -49,7 +54,7 @@ recorddefs = {
         ['ID-EDI-MITT-3', 'C', (35, 35), 'AN'], 
 
         # ID-EDI-DEST:
-        ['ID-EDI-DEST-1', 'M', (35, 35), 'AN'], # EDI ID sender Piva o EAN / UCC
+        ['ID-EDI-DEST-1', 'M', (35, 35), 'AN'], # ID sender Piva o EAN/UCC
         ['ID-EDI-DEST-2', 'C', (4, 4), 'AN'], 
         ['ID-EDI-DEST-3', 'C', (14, 14), 'AN'], 
             
@@ -72,15 +77,43 @@ recorddefs = {
         # YA9 Preallocated order
         ],
         
+    # NOTE: 
+    # Il Segmento RFF è facoltativo nell'Ordine ed è obbligatorio nella
+    # Conferma
+    # In caso di dispositivo di consegna seg. BGM campo TIPORD=226 e nella 
+    # conferma ordine devono essere obbligatoriamente presenti NUMORDC e 
+    # DATAORDC, perché su questi due campi si effettua l'abbinamento con il 
+    # relativo Ordine. 
+    # NUMORDC e DATAORDC devono essere uguali ai valori di numero e data ordine 
+    # presenti nell'ordine.
     'RFF': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # BOTSID        
-        ]      
+        ['TIPOREC', 'M', (3, 3), 'AN'], # RFF
+        
+        ['FORDPROM', 'C', (3, 3), 'AN'], # P(romotional), Blank(normal)
+        
+        ['NUMORDF', 'C', (35, 35), 'AN'], # No in order only confirmation
+        ['DATAORDF', 'C', (8, 8), 'N'], # CCYYMMDD        
+        ['ORAORDF', 'C', (4, 4), 'N'], # HHMM
+        
+        ['NUMORDC', 'C', (35, 35), 'AN'],
+        ['DATAORDC', 'C', (8, 8), 'N'], # CCYYMMDD        
+        ['ORAORDC', 'C', (4, 4), 'N'], # HHMM
+        
+        ['NUMPORDF', 'C', (35, 35), 'AN'], # Num. order draft (supplier)
+        ['NUMPORDC', 'C', (35, 35), 'AN'], # Num. order draft (customer)                
+        ]
 
-    'LIN': [ # line record
-            ['BOTSID', 'C', 3, 'A'],
-            ['LINENUMBER', 'C', 6, 'N'],         
-            ['ARTICLE_GTIN', 'C', 14, 'AN'],         
-            ['DESCRIPTION', 'C', 35, 'AN'],         
-            ['QUANTITY', 'C', 16.3, 'N'], # quantity is ALWAYS 16 positions; it is written with 3 decimals and included the decimal sign;
-          ],
+    # NOTA:
+    # Il Segmento RFC è facoltativo nel documento Ordine, e non è da 
+    # valorizzare nel documento Conferma Ordine.
+    'RFC': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # FRC        
+        ['NUMCO', 'M', (35, 35), 'AN'], # Contract number        
+        ['DATAINCO', 'C', (8, 8), 'N'], # CCYYMMDD (start contract)
+        ['DATAFICO', 'C', (8, 8), 'N'], # CCYYMMDD (end contract)
+        ]
+
+    # 16.3, 'N' >> 
+    # quantity is ALWAYS 16 positions; it is written with 3 decimals and 
+    # included the decimal sign;
     }
