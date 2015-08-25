@@ -513,6 +513,45 @@ recorddefs = {
         ['VALOMISURA', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N        
         ['RANGEMIN', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N        
         ['RANGEMAS', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N        
+        ]
+
+    # -------------------------------------------------------------------------
+    #                      PAC Pack information
+    # -------------------------------------------------------------------------
+    'PAC': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # PAC
+        
+        ['QTAIMB', 'M', (15, 15), 'AN'], # 12 + 3, 12.3, number of pack #TODO N   
+        ['INFIMBACOD', 'C', (3, 3), 'AN'], 
+        # 50 = Coded with EAN / UCC (13 or 8)
+        # 51 = Pack coded ITF-14 ITF-6
+        # 52 = Coded package with UCC / EAN-128
+        
+        ['CONIMBCOD', 'C', (3, 3), 'AN'],
+        # 1 = Pack cost to supplier
+        # 2 = Pack cost to client
+        # 3 = Pack cost not to pay (to return)
+        # 4E = Loaned (EAN UCC code)
+        # 5E = Interchangable (EAN UCC code)
+        # 6E = Deposit (EAN UCC code)
+        # 7E = Not reusable (EAN UCC code)
+        ['IDETIPIMB', 'C', (3, 3), 'AN'],
+        # 08 = Lost pallet
+        # 09 = Pallet to return (EAN UCC code)
+        # 201 = Pallet ISO 1 (EAN UCC code)
+        # PK = Pack
+        # DPE = Expositors
+        # 200 = Pallet ISO 0 
+        # 203 = 1/4 EURO pallet
+        ['RESPAGIMBREST', 'C', (3, 3), 'AN'],
+        # 1 = Customer pay
+        # 2 = Free
+        # 3 = SUpplier pay
+        
+        
+        
+        
+        
         
         
         
