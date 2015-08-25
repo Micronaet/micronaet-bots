@@ -253,6 +253,28 @@ recorddefs = {
         ['Filler', 'C', (86, 86), 'AN'], # Not used
         ]
         
+    # -------------------------------------------------------------------------
+    #            NAM Stock delivery point information NAD 3035 = PW
+    # -------------------------------------------------------------------------
+    'NAM': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # NAC
+        ['CODMAGP', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
+        ['QCODMAGP', 'M', (3, 3), 'AN'], 
+        # 14 = EAN / UCC
+        # VA = VAT
+        # 91 = code assigned by supplier
+        # 92 = code assigned by customer
+        # ZZ = common defined code
+
+        ['RAGSOCM', 'C', (70, 70), 'AN'], 
+        ['INDIRM', 'C', (70, 70), 'AN'], 
+        ['CITTAM', 'C', (35, 35), 'AN'],
+        ['PROVM', 'C', (9, 9), 'AN'],
+        ['CAPM', 'C', (9, 9), 'AN'],
+        ['NAZIOM', 'C', (3, 3), 'AN'], # National code
+        ['Filler', 'C', (86, 86), 'AN'], # Not used
+        ]
+        
 
 
     # 16.3, 'N' >> 
