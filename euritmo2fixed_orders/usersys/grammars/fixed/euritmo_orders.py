@@ -478,7 +478,43 @@ recorddefs = {
         # CU = Consumer unit
         # TU = Trade unit
         # Note: Mandatory if present PRZUN2
+        ]
 
+    # -------------------------------------------------------------------------
+    #                      MEA Product measure product
+    # -------------------------------------------------------------------------
+    'MEA': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # MEA
+        ['QUALMISURA', 'M', (3, 3), 'AN'],
+        # PD = Physical dimension (order product)
+        ['IDDIMENCOD', 'C', (3, 3), 'AN'],
+        # AAA = Net unit
+        # AAB = Lord unit
+        # DBX = BRIX grade (EAN UCC)
+        # DN = Density
+        # HT = Height
+        # LN = Length
+        # UCO = Unit for pack
+        # WD = Width
+        # LAY = Number of layer
+        # ULY = Number of unit
+        ['SIGNIMISCOD', 'C', (3, 3), 'AN'],
+        # 3 = Nearest
+        # 4 = Exactly equal
+        ['QUALUNIMIS', 'M', (3, 3), 'AN'],
+        # CMT = Centimeter
+        # GRM = Grams
+        # KGM = Kg
+        # LTR = Liter
+        # MLT = Milliliter
+        # MTR = Meter
+        # PCE = Piece
+        # MTK = Square meter
+        ['VALOMISURA', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N        
+        ['RANGEMIN', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N        
+        ['RANGEMAS', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N        
+        
+        
         
         
         
