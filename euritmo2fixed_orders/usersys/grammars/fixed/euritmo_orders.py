@@ -396,6 +396,103 @@ recorddefs = {
         ['DESCOND2', 'M', (70, 70), 'AN'], 
         ]
         
+    # -------------------------------------------------------------------------
+    #                      LIN Details information
+    # -------------------------------------------------------------------------
+    'LIN': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # LIN
+        
+        ['NUMRIGA', 'C', (6, 6), 'AN'], # Number of line # TODO N
+        ['CODEANCU', 'C', (35, 35), 'AN'], # EAN / UCC UPC of CU
+        
+        ['TIPOCODCU', 'C', (3, 3), 'AN'], 
+        # EN = code EAN / UCC
+        # UP = UPC
+
+        ['CODEANTU', 'C', (35, 35), 'AN'], # EAN / UCC / TU
+        ['CODFORTU', 'C', (35, 35), 'AN'], # TU code (from prod.)
+        ['CODDISTU', 'C', (35, 35), 'AN'], # TU code (from distr.)
+        ['DESART', 'M', (35, 35), 'AN'], # Description item
+        ['FLINPROM', 'C', (3, 3), 'AN'],
+        # P = Promotional order
+        # Blank = normal order
+
+        ['QTAORD', 'M', (15, 15), 'AN'], # 12 + 3, 12.3 TODO N
+        ['UDMQORD', 'C', (3, 3), 'AN'],
+        # CT = Pack
+        # PCE = Piece
+        # KGM = Kg
+        # MTR = Meter
+        # MTK = MQ
+        # LTR = Liter
+        # CU = Consumer unit
+        # TU = Trade unit
+        # Note: Mandatory if present QTAORD
+        
+        ['PRZUNI', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N        
+        ['TIPOPRZ', 'C', (3, 3), 'AN'], 
+        # AAA= Net
+        # AAB = Lord
+        # Nota: Mandatory if PRZUNI
+        
+        ['UDMPRZUN', 'C', (3, 3), 'AN'],
+        # CT = Pack
+        # PCE = Piece
+        # KGM = Kg
+        # MTR = Meter
+        # MTK = MQ
+        # LTR = Liter
+        # CU = Consumer unit
+        # TU = Trade unit
+        # Note: Mandatory if present PRZUNI
+
+        ['NRCUINTU', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N        
+        ['CODAZIOL', 'C', (3, 3), 'AN'], 
+        # Mandatory NOT present in order
+        # Mandatory present in order
+        
+        ['QTACONF', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N        
+        ['UDMQCONF', 'C', (3, 3), 'AN'],
+        # CT = Pack
+        # PCE = Piece
+        # KGM = Kg
+        # MTR = Meter
+        # MTK = MQ
+        # LTR = Liter
+        # CU = Consumer unit
+        # TU = Trade unit
+        # Note: Mandatory if present QTACONF
+        
+        ['PRZUN2', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N        
+        ['TIPOPRZ2', 'C', (3, 3), 'AN'], 
+        # AAA= Net
+        # AAB = Lord
+        # Nota: Mandatory if PRZUNI
+        ['UDMPRZUN2', 'C', (3, 3), 'AN'],
+        # CT = Pack
+        # PCE = Piece
+        # KGM = Kg
+        # MTR = Meter
+        # MTK = MQ
+        # LTR = Liter
+        # CU = Consumer unit
+        # TU = Trade unit
+        # Note: Mandatory if present PRZUN2
+
+        
+        
+        
+        
+        
+        
+        
+
+        
+        
+        
+        
+        
+        
         
         
         
