@@ -89,7 +89,7 @@ plugins = [
         'alt': u'', 
         'defer': False, 
         'desc': None, 
-        'fromchannel': u'euritmo_order_in', 
+        'fromchannel': u'euritmo_order_in',
         'fromeditype': u'fixed', 
         'frommessagetype': u'euritmo_orders', 
         'frompartner': None, 
