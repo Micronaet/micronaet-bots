@@ -295,6 +295,21 @@ recorddefs = {
         # 063 = no delivery after date-hour
         # only present if TIPODATAC = 064
         
+    # -------------------------------------------------------------------------
+    #                 FTX Extra information and notes (header)
+    # -------------------------------------------------------------------------
+    # Nota:
+    # Per le transazioni EDI che rientrano nell’ambito di applicazione 
+    # dell’art. 62 del decreto legge 24 gennaio 2012 (convertito dalla legge 
+    # 24 marzo 2012, n° 27) è possibile inserire nel campo NOTE la
+    # dicitura “Assolve gli obblighi di cui all’articolo 62, comma 1, del 
+    # decreto legge 24 gennaio 2012, n. 1, convertito, con modificazioni, 
+    # dalla legge 24 marzo 2012, n. 27.”
+    'FTX': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # FTX
+        ['DIVISA', 'C', (3, 3), 'AN'], # ITL = Lira, EUR = Euro
+        ['NOTE', 'C', (210, 210), 'AN'], # Extra info for payment
+        
 
 
 
