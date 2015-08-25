@@ -38,7 +38,11 @@ structure = [
     ]
 
 # TODO the fields in each record. 'BOTSID' is the record tag?
+# TODO Date is AN not N
 recorddefs = {
+    # -------------------------------------------------------------------------
+    #                                   BGM
+    # -------------------------------------------------------------------------
     # NOTA:
     # In caso di “ordine normale” blank o 105 in TIPORD i qualificatori da 
     # usare 
@@ -60,7 +64,7 @@ recorddefs = {
             
         ['TIPODOC', 'M', (6, 6), 'AN'], # ORDERS ORDERSP ORDCHG
         ['NUMODOC', 'M', (35, 35), 'AN'],
-        ['ORADOC', 'C', (4, 4), 'N'], # HHMM
+        ['ORADOC', 'C', (4, 4), 'AN'], # HHMM
             
         ['CODAZION', 'C', (3, 3), 'AN'], 
         # ORDER: C, CONF: M [R(ifiutato), A(ccettato), M(odificato)]
@@ -77,6 +81,9 @@ recorddefs = {
         # YA9 Preallocated order
         ],
         
+    # -------------------------------------------------------------------------
+    #                                   RFF
+    # -------------------------------------------------------------------------
     # NOTE: 
     # Il Segmento RFF è facoltativo nell'Ordine ed è obbligatorio nella
     # Conferma
@@ -92,26 +99,61 @@ recorddefs = {
         ['FORDPROM', 'C', (3, 3), 'AN'], # P(romotional), Blank(normal)
         
         ['NUMORDF', 'C', (35, 35), 'AN'], # No in order only confirmation
-        ['DATAORDF', 'C', (8, 8), 'N'], # CCYYMMDD        
-        ['ORAORDF', 'C', (4, 4), 'N'], # HHMM
+        ['DATAORDF', 'C', (8, 8), 'AN'], # CCYYMMDD        
+        ['ORAORDF', 'C', (4, 4), 'AN'], # HHMM
         
         ['NUMORDC', 'C', (35, 35), 'AN'],
-        ['DATAORDC', 'C', (8, 8), 'N'], # CCYYMMDD        
-        ['ORAORDC', 'C', (4, 4), 'N'], # HHMM
+        ['DATAORDC', 'C', (8, 8), 'AN'], # CCYYMMDD        
+        ['ORAORDC', 'C', (4, 4), 'AN'], # HHMM
         
         ['NUMPORDF', 'C', (35, 35), 'AN'], # Num. order draft (supplier)
         ['NUMPORDC', 'C', (35, 35), 'AN'], # Num. order draft (customer)                
         ]
 
+    # -------------------------------------------------------------------------
+    #                                   RFC
+    # -------------------------------------------------------------------------
     # NOTA:
     # Il Segmento RFC è facoltativo nel documento Ordine, e non è da 
     # valorizzare nel documento Conferma Ordine.
     'RFC': [
         ['TIPOREC', 'M', (3, 3), 'AN'], # FRC        
         ['NUMCO', 'M', (35, 35), 'AN'], # Contract number        
-        ['DATAINCO', 'C', (8, 8), 'N'], # CCYYMMDD (start contract)
-        ['DATAFICO', 'C', (8, 8), 'N'], # CCYYMMDD (end contract)
+        ['DATAINCO', 'C', (8, 8), 'AN'], # CCYYMMDD (start contract) 
+        ['DATAFICO', 'C', (8, 8), 'AN'], # CCYYMMDD (end contract)
         ]
+
+    # -------------------------------------------------------------------------
+    #                                   NAS
+    # -------------------------------------------------------------------------
+    'NAS': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # NAS
+        ['CODFORN', 'M', (17, 17), 'AN'], # Supplier ID
+        
+        ['QCODFORN', 'M', (3, 3), 'AN'], 
+        # 14 = Cod. EAN / UCC
+        # VA = P. IVA
+        # 91 = assigned from supplier code 
+        # 92 = assigned from customer code
+        # ZZ = common code
+        
+        ['RAGSOCF', 'C', (70, 70), 'AN'], # Supplier
+        ['INDIRF', 'C', (70, 70), 'AN'],
+        ['CITTAF', 'C', (35, 35), 'AN'],
+        ['PROVF', 'C', (9, 9), 'AN'],
+        ['CAPF', 'C', (9, 9), 'AN'],
+        ['NAZIOF', 'C', (3, 3), 'AN'], # National code
+        ['Filler', 'C', (345, 345), 'AN'], # Not used
+        ]
+
+    # -------------------------------------------------------------------------
+    #                                   NAS
+    # -------------------------------------------------------------------------
+    'NAS': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # NAS
+
+
+        
 
     # 16.3, 'N' >> 
     # quantity is ALWAYS 16 positions; it is written with 3 decimals and 
