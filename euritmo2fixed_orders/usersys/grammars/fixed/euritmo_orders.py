@@ -209,6 +209,50 @@ recorddefs = {
         ['Filler', 'C', (86, 86), 'AN'], # Not used
         ]
         
+    # -------------------------------------------------------------------------
+    #              NAI Invoice addresser information NAD 3035 = IV
+    # -------------------------------------------------------------------------
+    'NAI': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # NAI
+        ['CODFATT', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
+        ['QCODFATT', 'M', (3, 3), 'AN'], 
+        # 14 = EAN / UCC
+        # VA = VAT
+        # 91 = code assigned by supplier
+        # 92 = code assigned by customer
+        # ZZ = common defined code
+
+        ['RAGSOCI', 'C', (70, 70), 'AN'], 
+        ['INDIRI', 'C', (70, 70), 'AN'], 
+        ['CITTAI', 'C', (35, 35), 'AN'],
+        ['PROVI', 'C', (9, 9), 'AN'],
+        ['CAPI', 'C', (9, 9), 'AN'],
+        ['NAZIOI', 'C', (3, 3), 'AN'], # National code
+        ['Filler', 'C', (86, 86), 'AN'], # Not used
+        ]
+        
+    # -------------------------------------------------------------------------
+    #             NAC Stock receive point information NAD 3035 = IC
+    # -------------------------------------------------------------------------
+    'NAC': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # NAC
+        ['CODMAGI', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
+        ['QCODMAGI', 'M', (3, 3), 'AN'], 
+        # 14 = EAN / UCC
+        # VA = VAT
+        # 91 = code assigned by supplier
+        # 92 = code assigned by customer
+        # ZZ = common defined code
+
+        ['RAGSOCC', 'C', (70, 70), 'AN'], 
+        ['INDIRC', 'C', (70, 70), 'AN'], 
+        ['CITTAC', 'C', (35, 35), 'AN'],
+        ['PROVC', 'C', (9, 9), 'AN'],
+        ['CAPC', 'C', (9, 9), 'AN'],
+        ['NAZIOC', 'C', (3, 3), 'AN'], # National code
+        ['Filler', 'C', (86, 86), 'AN'], # Not used
+        ]
+        
 
 
     # 16.3, 'N' >> 
