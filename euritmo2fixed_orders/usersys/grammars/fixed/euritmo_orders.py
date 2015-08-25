@@ -41,7 +41,7 @@ structure = [
 # TODO Date is AN not N
 recorddefs = {
     # -------------------------------------------------------------------------
-    #                                   BGM
+    #                    BGM Mandatory information (document)
     # -------------------------------------------------------------------------
     # NOTA:
     # In caso di “ordine normale” blank o 105 in TIPORD i qualificatori da 
@@ -82,7 +82,7 @@ recorddefs = {
         ],
         
     # -------------------------------------------------------------------------
-    #                                   RFF
+    #                  RFF Reference information about document
     # -------------------------------------------------------------------------
     # NOTE: 
     # Il Segmento RFF è facoltativo nell'Ordine ed è obbligatorio nella
@@ -111,7 +111,7 @@ recorddefs = {
         ]
 
     # -------------------------------------------------------------------------
-    #                                   RFC
+    #                      RFC Reference contract information
     # -------------------------------------------------------------------------
     # NOTA:
     # Il Segmento RFC è facoltativo nel documento Ordine, e non è da 
@@ -124,7 +124,7 @@ recorddefs = {
         ]
 
     # -------------------------------------------------------------------------
-    #                                   NAS
+    #                      NAS (Supplier information) NAD 3055 = SU
     # -------------------------------------------------------------------------
     'NAS': [
         ['TIPOREC', 'M', (3, 3), 'AN'], # NAS
@@ -147,10 +147,23 @@ recorddefs = {
         ]
 
     # -------------------------------------------------------------------------
-    #                                   NAS
+    #                     CTA Supplier contact information
     # -------------------------------------------------------------------------
-    'NAS': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # NAS
+    'CTA': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # CTA
+        
+        ['FUNZCONT', 'C', (3, 3), 'AN'],
+        # AP = Accounting
+        # IC = Generic for information
+        # OC = Order contact
+        # SA = Sale admin
+        # SD = Delivery 
+
+        ['TELEFONO', 'C', (25, 25), 'AN'],
+        ['FAX', 'C', (25, 25), 'AN'],
+        ['TELEX', 'C', (25, 25), 'AN'],
+        ['EMAIL', 'C', (70, 70), 'AN'],
+        ]
 
 
         
