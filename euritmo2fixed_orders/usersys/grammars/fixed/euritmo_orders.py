@@ -547,7 +547,15 @@ recorddefs = {
         # 1 = Customer pay
         # 2 = Free
         # 3 = SUpplier pay
+        ]
+                
+    # -------------------------------------------------------------------------
+    #          DTR Delivery date information and level order line
+    # -------------------------------------------------------------------------
+    'DTR': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # DTR
         
+        ]
         
         
         
