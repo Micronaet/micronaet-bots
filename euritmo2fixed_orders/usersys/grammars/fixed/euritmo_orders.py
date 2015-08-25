@@ -294,6 +294,7 @@ recorddefs = {
         ['TIPODATA2', 'M', (3, 3), 'AN'],
         # 063 = no delivery after date-hour
         # only present if TIPODATAC = 064
+        ]
         
     # -------------------------------------------------------------------------
     #                 FTX Extra information and notes (header)
@@ -309,7 +310,81 @@ recorddefs = {
         ['TIPOREC', 'M', (3, 3), 'AN'], # FTX
         ['DIVISA', 'C', (3, 3), 'AN'], # ITL = Lira, EUR = Euro
         ['NOTE', 'C', (210, 210), 'AN'], # Extra info for payment
+        ]
         
+    # -------------------------------------------------------------------------
+    #              PAT Terms information, payment mode
+    # -------------------------------------------------------------------------
+    'PAT': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # PAT
+        
+        ['TIPOCOND', 'M', (3, 3), 'AN'],
+        # 20 = Penalty terms
+        # 21 = Split payment
+        # 22 = Discount
+        # 10E = Complete payment
+
+        ['DATASCAD', 'C', (8, 8), 'AN'], # CCYYMMDD
+        
+        # CONDPAG:
+        ['RIFTERMP', 'M', (3, 3), 'AN'], # Payment term ref.
+        # 1 = Order date
+        # 5 = Invoice date
+        # 9 = Receive date
+        # 21 = Receive goods
+        # 66 = Specific date
+        # 70 = Emission date (transport document)
+        # 81 = Start date transport
+        ['RELTERMP', 'C', (3, 3), 'AN'], # Temporal relation
+        # 1 = Reference date
+        # 3 = Date after ref.
+        # 6 = End month from reference date
+        # 7 = End month after receive
+        # 12E = 15 / last day of month for payment
+        ['UNTEMP', 'C', (3, 3), 'AN'],
+        # D = Days
+        # W = Weeks
+        # M = Months
+        # Y = Years
+        ['NUNTEMP', 'C', (3, 3), 'AN'], # Payment term ref.
+
+        ['IMPORTO', 'C', (16, 16), 'AN'], # 12 + 3 N for 12.3
+        ['DIVISA', 'C', (3, 3), 'AN'], # ISO code for currency
+        ['PERC', 'C', (7, 7), 'AN'], # 3 + 4 N for 3.4
+        ['DESCRIZ', 'C', (35, 35), 'AN'], # Payment description
+        
+        ['BANCADOC', 'C', (35, 35), 'AN'],
+        # Format: ABI(5) - CAB(5) - C/C(23)
+        ['BANCADESC', 'C', (35, 35), 'AN'], # Bank name
+        ['FACTOR', 'C', (35, 35), 'AN'],
+
+        ['CODPAG', 'C', (3, 3), 'AN'], 
+        # Payment code:
+        # 1 = Direct paymenyt
+        # 35 = Bank document payment
+
+        ['MEZZOPAG', 'C', (3, 3), 'AN'],
+        # 10 = Cach
+        # 20 = Cheque
+        # 23 = Circular cheque
+        # 30 = Bank transfer
+        # 31 = Bank transfer
+        # 42 = Payment via CC bank
+        # 70 = Trat
+        # 15E = RID
+        # 74 = Bank ric.
+        # 97 = Fin. Compensation
+        ]
+        
+        
+        
+        
+        
+        
+         
+        
+        
+
 
 
 
