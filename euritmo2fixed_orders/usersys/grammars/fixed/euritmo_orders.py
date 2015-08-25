@@ -135,7 +135,7 @@ recorddefs = {
         # VA = P. IVA
         # 91 = assigned from supplier code 
         # 92 = assigned from customer code
-        # ZZ = common code
+        # ZZ = common defined code
         
         ['RAGSOCF', 'C', (70, 70), 'AN'], # Supplier
         ['INDIRF', 'C', (70, 70), 'AN'],
@@ -165,8 +165,51 @@ recorddefs = {
         ['EMAIL', 'C', (70, 70), 'AN'],
         ]
 
+    # -------------------------------------------------------------------------
+    #                     NAB Buyer information NAD 3035 = BY
+    # -------------------------------------------------------------------------
+    'NAB': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # NAB
+        ['CODBUYER', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
+        ['QCODBUY', 'M', (3, 3), 'AN'], 
+        # 14 = EAN / UCC
+        # VA = VAT
+        # 91 = code assigned by supplier
+        # 92 = code assigned by customer
+        # ZZ = common defined code
 
+        ['RAGSOCB', 'C', (70, 70), 'AN'], 
+        ['INDIRB', 'C', (70, 70), 'AN'], 
+        ['CITTAB', 'C', (35, 35), 'AN'],
+        ['PROVB', 'C', (9, 9), 'AN'],
+        ['CAPB', 'C', (9, 9), 'AN'],
+        ['NAZIOB', 'C', (3, 3), 'AN'], # National code
+        ['Filler', 'C', (86, 86), 'AN'], # Not used
+        ]
         
+    # -------------------------------------------------------------------------
+    #              NAD Delivery point information NAD 3035 = DP
+    # -------------------------------------------------------------------------
+    'NAD': [
+        ['TIPOREC', 'M', (3, 3), 'AN'], # NAD
+        ['CODCONS', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
+        ['QCODCONS', 'M', (3, 3), 'AN'], 
+        # 14 = EAN / UCC
+        # VA = VAT
+        # 91 = code assigned by supplier
+        # 92 = code assigned by customer
+        # ZZ = common defined code
+
+        ['RAGSOCD', 'C', (70, 70), 'AN'], 
+        ['INDIRD', 'C', (70, 70), 'AN'], 
+        ['CITTAD', 'C', (35, 35), 'AN'],
+        ['PROVD', 'C', (9, 9), 'AN'],
+        ['CAPD', 'C', (9, 9), 'AN'],
+        ['NAZIOD', 'C', (3, 3), 'AN'], # National code
+        ['Filler', 'C', (86, 86), 'AN'], # Not used
+        ]
+        
+
 
     # 16.3, 'N' >> 
     # quantity is ALWAYS 16 positions; it is written with 3 decimals and 
