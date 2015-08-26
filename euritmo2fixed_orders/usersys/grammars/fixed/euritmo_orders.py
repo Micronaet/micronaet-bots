@@ -667,28 +667,30 @@ recorddefs = {
         # TU = Trade unit
         ]
         
+    # -------------------------------------------------------------------------
+    #             DTL Delivery date (detail level - delivery point)
+    # -------------------------------------------------------------------------
+    # Se record non presente a livello di riga e punto di consegna vale la data 
+    # inserita in testata nel seg. DTM. Questo record deve essere riportato per
+    # ogni data di consegna schedulata per questa riga ordine (ordine cliente) 
+    # e per un determinato punto di consegna.
+    'LOC': [
+        ['BOTSID', 'M', (3, 3), 'AN'], # LOC
         
-        
-        
-        
-        
+        ['DATRCONS', 'M', (8, 8), 'AN'], # CCYYMMDD
+        ['ORARCONS', 'C', (4, 4), 'AN'], # HHMM
+        ['TIPODATRC', 'M', (3, 3), 'AN'],
+        # 002 = date / time request
+        # 064 = not before date / time
+        # 069 = delivery mandatory
 
+        ['DATRCON2', 'C', (8, 8), 'AN'], # CCYYMMDD
+        ['ORARCON2', 'C', (4, 4), 'AN'], # HHMM
+        ['TIPODATR2', 'C', (3, 3), 'AN'],
+        # 063 = not after date / time (present if TIPODATAC = 064)
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-         
-        
-        
-
+        ['QTACONS', 'C', (15, 15), 'AN'], # 12 + 3, 12.3        
+        ]
 
 
 
