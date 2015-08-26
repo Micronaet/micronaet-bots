@@ -674,8 +674,8 @@ recorddefs = {
     # inserita in testata nel seg. DTM. Questo record deve essere riportato per
     # ogni data di consegna schedulata per questa riga ordine (ordine cliente) 
     # e per un determinato punto di consegna.
-    'LOC': [
-        ['BOTSID', 'M', (3, 3), 'AN'], # LOC
+    'DTL': [
+        ['BOTSID', 'M', (3, 3), 'AN'], # DTL
         
         ['DATRCONS', 'M', (8, 8), 'AN'], # CCYYMMDD
         ['ORARCONS', 'C', (4, 4), 'AN'], # HHMM
@@ -692,7 +692,26 @@ recorddefs = {
         ['QTACONS', 'C', (15, 15), 'AN'], # 12 + 3, 12.3        
         ]
 
-
+    # -------------------------------------------------------------------------
+    #                        CNT Summary of document
+    # -------------------------------------------------------------------------
+    'CNT': [
+        ['BOTSID', 'M', (3, 3), 'AN'], # CNT
+        ['QTAORDT', 'C', (15, 15), 'AN'], # Total Q. ordererd 
+        ['UDMQORDT', 'C', (3, 3), 'AN'],
+        # CT = Pack
+        # PCE = Piece
+        # KGM = Kg
+        # MTR = Meter
+        # MTK = MQ
+        # LTR = Liter
+        # CU = Consumer unit
+        # TU = Trade unit
+        # Mandatory if present QTAORDT
+        ['NUMLINT', 'C', (15, 15), 'AN'], # Value of number line in doc.
+        ]
+        
+        
 
     # 16.3, 'N' >> 
     # quantity is ALWAYS 16 positions; it is written with 3 decimals and 
