@@ -28,16 +28,15 @@ structure = [
             {ID: 'PAC', MIN: 0, MAX: 9999},
             {ID: 'DTR', MIN: 0, MAX: 99},
             {ID: 'ALD', MIN: 0, MAX: 99},
-            {ID: 'FLT', MIN: 0, MAX: 99},
+            {ID: 'FTL', MIN: 0, MAX: 99},
             {ID: 'LOC', MIN: 0, MAX: 9999, LEVEL: [
-                {ID: 'DLT', MIN: 0, MAX: 9999},                
+                {ID: 'DTL', MIN: 0, MAX: 9999},                
                 ]},
             ]},            
         {ID: 'CNT', MIN: 0, MAX: 1},
         ]},
     ]
 
-# TODO the fields in each record. 'BOTSID' is the record tag?
 # TODO Date is AN not N
 recorddefs = {
     # -------------------------------------------------------------------------
@@ -712,8 +711,7 @@ recorddefs = {
         ]
         
         
-
-    # 16.3, 'N' >> 
-    # quantity is ALWAYS 16 positions; it is written with 3 decimals and 
+    # Note: 
+    # 16.3, 'N' >> q. is ALWAYS 16 pos. it is written with 3 decimals and 
     # included the decimal sign;
     }
