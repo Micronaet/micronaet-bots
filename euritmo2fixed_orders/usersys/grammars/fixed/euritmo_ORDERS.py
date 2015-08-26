@@ -35,7 +35,6 @@ structure = [
                 {ID: 'DTL', MIN: 0, MAX: 9999},
                 ]},
             ]},
-        ]},
         {ID: 'CNT', MIN: 0, MAX: 1},
         ]},
     ]
@@ -291,10 +290,10 @@ recorddefs = {
         # 064 = no delivery before date-hour
         # 069 = mandatory date-hour delivery granted
 
-        ['DATACON2', 'M', (8, 8), 'AN'], # CCYYMMDD
+        ['DATACON2', 'C', (8, 8), 'AN'], # CCYYMMDD
         ['ORACON2', 'C', (4, 4), 'AN'], # HHMM
 
-        ['TIPODATA2', 'M', (3, 3), 'AN'],
+        ['TIPODATA2', 'C', (3, 3), 'AN'],
         # 063 = no delivery after date-hour
         # only present if TIPODATAC = 064
         ],
