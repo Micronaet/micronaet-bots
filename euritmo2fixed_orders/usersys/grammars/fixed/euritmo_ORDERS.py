@@ -24,18 +24,18 @@ structure = [
         {ID: 'DTM', MIN: 1, MAX: 1},
         {ID: 'FTX', MIN: 0, MAX: 5},
         {ID: 'PAT', MIN: 0, MAX: 10},
-        {ID: 'TOD', MIN: 0, MAX: 5, LEVEL: [
-            {ID: 'LIN', MIN: 1, MAX: 999, LEVEL: [
-                {ID: 'MEA', MIN: 0, MAX: 99},
-                {ID: 'PAC', MIN: 0, MAX: 9999},
-                {ID: 'DTR', MIN: 0, MAX: 99},
-                {ID: 'ALD', MIN: 0, MAX: 99},
-                {ID: 'FTL', MIN: 0, MAX: 99},
-                {ID: 'LOC', MIN: 0, MAX: 9999, LEVEL: [
-                    {ID: 'DTL', MIN: 0, MAX: 9999},
-                    ]},
+        {ID: 'TOD', MIN: 0, MAX: 5},
+        {ID: 'LIN', MIN: 1, MAX: 999, LEVEL: [
+            {ID: 'MEA', MIN: 0, MAX: 99},
+            {ID: 'PAC', MIN: 0, MAX: 9999},
+            {ID: 'DTR', MIN: 0, MAX: 99},
+            {ID: 'ALD', MIN: 0, MAX: 99},
+            {ID: 'FTL', MIN: 0, MAX: 99},
+            {ID: 'LOC', MIN: 0, MAX: 9999, LEVEL: [
+                {ID: 'DTL', MIN: 0, MAX: 9999},
                 ]},
             ]},
+        ]},
         {ID: 'CNT', MIN: 0, MAX: 1},
         ]},
     ]
