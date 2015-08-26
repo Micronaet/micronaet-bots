@@ -50,7 +50,7 @@ recorddefs = {
     # D90.1 : DE 1001 =105 ordine (come da manuale EDI D90.1)
     # D96.a: DE 1001 = 220 ordine (come da manuale EDI D96.a)
     'BGM': [ # header record
-        ['TIPOREC', 'M', (3, 3), 'AN'], # BGM (BOTSID)
+        ['BOTSID', 'M', (3, 3), 'AN'], # BGM (BOTSID)
             
         # ID-EDI-MITT:
         ['ID-EDI-MITT-1', 'M', (35, 35), 'AN'], # ID sender Piva o EAN/UCC
@@ -94,7 +94,7 @@ recorddefs = {
     # NUMORDC e DATAORDC devono essere uguali ai valori di numero e data ordine 
     # presenti nell'ordine.
     'RFF': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # RFF
+        ['BOTSID', 'M', (3, 3), 'AN'], # RFF
         
         ['FORDPROM', 'C', (3, 3), 'AN'], # P(romotional), Blank(normal)
         
@@ -117,7 +117,7 @@ recorddefs = {
     # Il Segmento RFC è facoltativo nel documento Ordine, e non è da 
     # valorizzare nel documento Conferma Ordine.
     'RFC': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # FRC        
+        ['BOTSID', 'M', (3, 3), 'AN'], # FRC        
         ['NUMCO', 'M', (35, 35), 'AN'], # Contract number        
         ['DATAINCO', 'C', (8, 8), 'AN'], # CCYYMMDD (start contract) 
         ['DATAFICO', 'C', (8, 8), 'AN'], # CCYYMMDD (end contract)
@@ -127,7 +127,7 @@ recorddefs = {
     #                      NAS (Supplier information) NAD 3055 = SU
     # -------------------------------------------------------------------------
     'NAS': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # NAS
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAS
         ['CODFORN', 'M', (17, 17), 'AN'], # Supplier ID
         
         ['QCODFORN', 'M', (3, 3), 'AN'], 
@@ -150,7 +150,7 @@ recorddefs = {
     #                     CTA Supplier contact information
     # -------------------------------------------------------------------------
     'CTA': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # CTA
+        ['BOTSID', 'M', (3, 3), 'AN'], # CTA
         
         ['FUNZCONT', 'C', (3, 3), 'AN'],
         # AP = Accounting
@@ -169,7 +169,7 @@ recorddefs = {
     #                     NAB Buyer information NAD 3035 = BY
     # -------------------------------------------------------------------------
     'NAB': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # NAB
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAB
         ['CODBUYER', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
         ['QCODBUY', 'M', (3, 3), 'AN'], 
         # 14 = EAN / UCC
@@ -191,7 +191,7 @@ recorddefs = {
     #              NAD Delivery point information NAD 3035 = DP
     # -------------------------------------------------------------------------
     'NAD': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # NAD
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAD
         ['CODCONS', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
         ['QCODCONS', 'M', (3, 3), 'AN'], 
         # 14 = EAN / UCC
@@ -213,7 +213,7 @@ recorddefs = {
     #              NAI Invoice addresser information NAD 3035 = IV
     # -------------------------------------------------------------------------
     'NAI': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # NAI
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAI
         ['CODFATT', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
         ['QCODFATT', 'M', (3, 3), 'AN'], 
         # 14 = EAN / UCC
@@ -235,7 +235,7 @@ recorddefs = {
     #             NAC Stock receive point information NAD 3035 = IC
     # -------------------------------------------------------------------------
     'NAC': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # NAC
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAC
         ['CODMAGI', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
         ['QCODMAGI', 'M', (3, 3), 'AN'], 
         # 14 = EAN / UCC
@@ -257,7 +257,7 @@ recorddefs = {
     #            NAM Stock delivery point information NAD 3035 = PW
     # -------------------------------------------------------------------------
     'NAM': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # NAC
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAC
         ['CODMAGP', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
         ['QCODMAGP', 'M', (3, 3), 'AN'], 
         # 14 = EAN / UCC
@@ -279,7 +279,7 @@ recorddefs = {
     #                    DTM Delivery date information
     # -------------------------------------------------------------------------
     'DTM': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # DTM
+        ['BOTSID', 'M', (3, 3), 'AN'], # DTM
         ['DATACONS', 'M', (8, 8), 'AN'], # CCYYMMDD
         ['ORACONS', 'C', (4, 4), 'AN'], # HHMM
         
@@ -307,7 +307,7 @@ recorddefs = {
     # decreto legge 24 gennaio 2012, n. 1, convertito, con modificazioni, 
     # dalla legge 24 marzo 2012, n. 27.”
     'FTX': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # FTX
+        ['BOTSID', 'M', (3, 3), 'AN'], # FTX
         ['DIVISA', 'C', (3, 3), 'AN'], # ITL = Lira, EUR = Euro
         ['NOTE', 'C', (210, 210), 'AN'], # Extra info for payment
         ]
@@ -316,7 +316,7 @@ recorddefs = {
     #              PAT Terms information, payment mode
     # -------------------------------------------------------------------------
     'PAT': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # PAT
+        ['BOTSID', 'M', (3, 3), 'AN'], # PAT
         
         ['TIPOCOND', 'M', (3, 3), 'AN'],
         # 20 = Penalty terms
@@ -380,7 +380,7 @@ recorddefs = {
     #              TOD Delivery condition, transport
     # -------------------------------------------------------------------------
     'TOD': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # TOD
+        ['BOTSID', 'M', (3, 3), 'AN'], # TOD
         
         ['CODCONS', 'M', (3, 3), 'AN'], 
         # 2 = Delivery condition
@@ -400,7 +400,7 @@ recorddefs = {
     #                      LIN Details information
     # -------------------------------------------------------------------------
     'LIN': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # LIN
+        ['BOTSID', 'M', (3, 3), 'AN'], # LIN
         
         ['NUMRIGA', 'C', (6, 6), 'AN'], # Number of line # TODO N
         ['CODEANCU', 'C', (35, 35), 'AN'], # EAN / UCC UPC of CU
@@ -484,7 +484,7 @@ recorddefs = {
     #                      MEA Product measure product
     # -------------------------------------------------------------------------
     'MEA': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # MEA
+        ['BOTSID', 'M', (3, 3), 'AN'], # MEA
         ['QUALMISURA', 'M', (3, 3), 'AN'],
         # PD = Physical dimension (order product)
         ['IDDIMENCOD', 'C', (3, 3), 'AN'],
@@ -519,7 +519,7 @@ recorddefs = {
     #                      PAC Pack information
     # -------------------------------------------------------------------------
     'PAC': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # PAC
+        ['BOTSID', 'M', (3, 3), 'AN'], # PAC
         
         ['QTAIMB', 'M', (15, 15), 'AN'], # 12 + 3, 12.3, number of pack #TODO N   
         ['INFIMBACOD', 'C', (3, 3), 'AN'], 
@@ -564,7 +564,7 @@ recorddefs = {
     # Il totale della quantità riportata nei vari record DTR deve essere uguale
     # alla quantità riportata nel record LIN.
     'DTR': [
-        ['TIPOREC', 'M', (3, 3), 'AN'], # DTR
+        ['BOTSID', 'M', (3, 3), 'AN'], # DTR
 
         ['DATRCONS', 'M', (8, 8), 'AN'], # CCYYMMDD
         ['ORARCONS', 'C', (4, 4), 'AN'], # HHMM
@@ -578,9 +578,51 @@ recorddefs = {
         ['TIPODATR2', 'C', (3, 3), 'AN'],
         # 063 = not after date / time (present if TIPODATAC = 064)
         
-        ['QTACONS', 'C', (15, 15), 'AN'], # 12 + 3, 12.3
-        
+        ['QTACONS', 'C', (15, 15), 'AN'], # 12 + 3, 12.3        
         ]
+
+    # -------------------------------------------------------------------------
+    #                  ALD Discount or charge information
+    # -------------------------------------------------------------------------
+    'ALD': [
+        ['BOTSID', 'M', (3, 3), 'AN'], # ALD'
+        ['INDSCADD', 'M', (3, 3), 'AN'],
+        # A = Discount
+        # C = Charge
+        # N = Special condition
+        ['DESCR', 'C', (35, 35), 'AN'],
+        ['INDSEQ', 'C', (3, 3), 'AN'], # Sequence
+        ['TIPOSCADD', 'C', (6, 6), 'AN'],
+        # DI = Iconditioned discount
+        # PC = Package        
+        # FI = Financial charge
+        # IS = Refund invoice service
+        # FC = Transport cost
+        # VAB = Load discoint
+        # SER = Service
+        # TD = Commercial discount
+        # PAD = Promotional discount
+        # RAD = Bail
+        # VEJ = Environment protection
+        # X14 = Promotional activity
+        # 64E = Annual prize
+        # EAB = (ex. X01) ) Discount payment
+        # X13 = Amount on discount
+        # RAA = Prize
+        # AEO = Eco contribute SIAE (WEE)
+        # SIAE = SIAE
+        # SPEVTR = Sperimental station glass
+        ['IMPORTO', 'C', (16, 16), 'AN'], # 12 + 3, 12.3
+        ['PERC', 'C', (7, 7), 'AN'], # 4 + 3, 4.3
+        ['FLGPRZUN', 'M', (3, 3), 'AN'],
+        # Blank if discount in line
+        # X31 if amount is a unit discount 
+        # No 901
+        
+        
+        
+        
+        
         
         
         
