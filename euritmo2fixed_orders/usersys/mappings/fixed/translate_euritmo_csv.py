@@ -17,17 +17,51 @@ def main(inn, out):
     #                               BGM
     # -------------------------------------------------------------------------
     # TODO read fields from structure instead of load in tuple
-    BGM_fields = (
+    fields = (
         'ID-EDI-MITT-1', 'ID-EDI-MITT-2', 'ID-EDI-MITT-3',
         'ID-EDI-DEST-1', 'ID-EDI-DEST-2', 'ID-EDI-DEST-3',
         'TIPODOC', 'NUMDOC', 'DATADOC', 'ORADOC',
         'CODAZION', 'FLAGIMPE', 'TIPORD',
         )
 
-    for field in BGM_fields:
+    for field in fields:
         out.put({'BOTSID': 'BGM', field: 
             inn.get({'BOTSID': 'BGM', field: None})})
+
+    # -------------------------------------------------------------------------
+    #                               LIN
+    # -------------------------------------------------------------------------
+    fields = (
+        'NUMRIGA', 'CODEANCU', 'TIPOCODCU', 'CODEANTU', 'CODFORTU',
+        'CODDISTU', 'DESART', 'FLINPROM', 'QTAORD', 'UDMQORD',
+        'PRZUNI', 'TIPOPRZ', 'UDMPRZUN',
+        'NRCUINTU', 'CODAZIOL', 'QTACONF', 'UDMQCONF',
+        'PRZUN2', 'TIPOPRZ2', 'UDMPRZUN2',        
+        )
+    for lin in inn.getloop({'BOTSID':'BGM'}, {'BOTSID':'LIN'}):
+        lou = out.putloop({'BOTSID':'BGM'}, {'BOTSID':'LIN'})
+        # Note: get() in lin, put() on lou
+        for field in fields:
+            lou.put({'BOTSID':'LIN', field:
+                lin.get({'BOTSID':'LIN', field: None})})
+
+    # TODO go ahead
+
+
+
+    # -------------------------------------------------------------------------
+    #                               CNT
+    # -------------------------------------------------------------------------
+    #fields = (
+    #    'BOTSID', 'QTAORDT', 'UDMQORDT', 'NUMLINT',
+    #    )
+
+    #for field in fields:
+    #    out.put({'BOTSID': 'BGM', field: 
+    #        inn.get({'BOTSID': 'BGM', field: None})})
+
     
+
     # TODO Go ahead!    
     #transform.inn2out(inn, out)
     '''

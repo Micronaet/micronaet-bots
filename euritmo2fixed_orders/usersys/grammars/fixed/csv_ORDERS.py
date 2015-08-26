@@ -8,7 +8,7 @@ syntax = {
     }
 
 structure = [
-    {ID: 'BGM', MIN: 1, MAX: 10000},
+    {ID: 'BGM', MIN: 1, MAX: 10000, LEVEL: [
         #{ID: 'RFF', MIN: 0, MAX: 1},
         #{ID: 'RFC', MIN: 0, MAX: 10},
 
@@ -26,7 +26,7 @@ structure = [
         #{ID: 'FTX', MIN: 0, MAX: 5},
         #{ID: 'PAT', MIN: 0, MAX: 10},
         #{ID: 'TOD', MIN: 0, MAX: 5},
-        #{ID: 'LIN', MIN: 1, MAX: 999, LEVEL: [
+        {ID: 'LIN', MIN: 1, MAX: 999},# LEVEL: [
         #    {ID: 'MEA', MIN: 0, MAX: 99},
         #    {ID: 'PAC', MIN: 0, MAX: 9999},
         #    {ID: 'DTR', MIN: 0, MAX: 99},
@@ -36,6 +36,9 @@ structure = [
         #        {ID: 'DTL', MIN: 0, MAX: 9999},
         #        ]},
         #    ]},
-    {ID: 'CNT', MIN: 0, MAX: 1},
+        #{ID: 'CNT', MIN: 0, MAX: 1}
+        ]},
     ]
 
+# Add extra fields for filler to same recordset
+#recorddefs['BGM'].append(['FillerBGM', 'C', (57, 57), 'AN'])
