@@ -8,7 +8,7 @@ plugins = [
         'archivepath': u'',
         'askmdn': u'no',
         'certfile': None,
-        'charset': u'us-ascii',
+        'charset': u'utf-8',
         'desc': None,
         'filename': u'*.eur',
         'ftpaccount': u'',
@@ -41,7 +41,7 @@ plugins = [
         'archivepath': u'',
         'askmdn': u'no',
         'certfile': None,
-        'charset': u'us-ascii',
+        'charset': u'utf-8',
         'desc': None,
         'filename': u'order_*.csv',
         'ftpaccount': u'',
@@ -109,4 +109,4 @@ plugins = [
         'zip_incoming': None,
         'zip_outgoing': None,
     },
-]
+    ]
