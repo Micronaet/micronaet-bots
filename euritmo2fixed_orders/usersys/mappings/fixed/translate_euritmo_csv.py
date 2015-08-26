@@ -28,9 +28,27 @@ def main(inn, out):
         out.put({'BOTSID': 'BGM', field: 
             inn.get({'BOTSID': 'BGM', field: None})})
 
+
+    # -------------------------------------------------------------------------
+    #                               NAB
+    # -------------------------------------------------------------------------
+    fields = (
+        'CODBUYER', 'QCODBUY', 
+        'RAGSOCB', 'INDIRB', 'CITTAB', 'PROVB', 'CAPB', 'NAZIOB',
+        'Filler',
+        )
+
+    block = 'NAB'
+    for item in inn.getloop({'BOTSID': 'BGM'}, {'BOTSID': block}):
+        item_out = out.putloop({'BOTSID':'BGM'}, {'BOTSID': block})
+        for field in fields:
+            item_out.put({'BOTSID': block, field:
+                item.get({'BOTSID': block, field: None})})
+
     # -------------------------------------------------------------------------
     #                               LIN
     # -------------------------------------------------------------------------
+    block = 'LIN'
     fields = (
         'NUMRIGA', 'CODEANCU', 'TIPOCODCU', 'CODEANTU', 'CODFORTU',
         'CODDISTU', 'DESART', 'FLINPROM', 'QTAORD', 'UDMQORD',
@@ -38,12 +56,13 @@ def main(inn, out):
         'NRCUINTU', 'CODAZIOL', 'QTACONF', 'UDMQCONF',
         'PRZUN2', 'TIPOPRZ2', 'UDMPRZUN2',        
         )
-    for lin in inn.getloop({'BOTSID':'BGM'}, {'BOTSID':'LIN'}):
-        lou = out.putloop({'BOTSID':'BGM'}, {'BOTSID':'LIN'})
+
+    for item in inn.getloop({'BOTSID': 'BGM'}, {'BOTSID': block}):
+        item_out = out.putloop({'BOTSID': 'BGM'}, {'BOTSID': block})
         # Note: get() in lin, put() on lou
         for field in fields:
-            lou.put({'BOTSID':'LIN', field:
-                lin.get({'BOTSID':'LIN', field: None})})
+            item_out.put({'BOTSID': block, field:
+                item.get({'BOTSID': block, field: None})})
 
     # TODO go ahead
 

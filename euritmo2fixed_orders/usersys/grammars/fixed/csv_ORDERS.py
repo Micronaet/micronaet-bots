@@ -16,7 +16,7 @@ structure = [
         #{ID: 'NAS', MIN: 0, MAX: 1, LEVEL: [
         #    {ID: 'CTA', MIN: 0, MAX: 5},
         #    ]},
-        #{ID: 'NAB', MIN: 1, MAX: 1},
+        {ID: 'NAB', MIN: 1, MAX: 1},
         #{ID: 'NAD', MIN: 1, MAX: 1},
         #{ID: 'NAI', MIN: 0, MAX: 1},
         #{ID: 'NAC', MIN: 0, MAX: 1},
