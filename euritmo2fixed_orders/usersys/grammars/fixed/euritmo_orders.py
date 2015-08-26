@@ -552,8 +552,33 @@ recorddefs = {
     # -------------------------------------------------------------------------
     #          DTR Delivery date information and level order line
     # -------------------------------------------------------------------------
+    # Note: Con questo record DTR il fornitore, in fase di conferma, può 
+    # indicare la schedulazione delle
+    # consegne a livello di singola riga ordine del cliente. Ciò significa che
+    # a fronte di una riga d’ordine
+    # del cliente il fornitore conferma, sempre a livello di riga, le quantità,
+    # i prezzi, e inserisce nel DTR la
+    # schedulazione delle consegne (più record DTR per le diverse date 
+    # schedulate dal fornitore) con le
+    # relative quantità. Quindi in caso di conferma ordine un LIN con più DTR.
+    # Il totale della quantità riportata nei vari record DTR deve essere uguale
+    # alla quantità riportata nel record LIN.
     'DTR': [
         ['TIPOREC', 'M', (3, 3), 'AN'], # DTR
+
+        ['DATRCONS', 'M', (8, 8), 'AN'], # CCYYMMDD
+        ['ORARCONS', 'C', (4, 4), 'AN'], # HHMM
+        ['TIPODATRC', 'M', (3, 3), 'AN'],
+        # 002 = date / time request
+        # 064 = not before date / time
+        # 069 = delivery mandatory
+
+        ['DATRCON2', 'C', (8, 8), 'AN'], # CCYYMMDD
+        ['ORARCON2', 'C', (4, 4), 'AN'], # HHMM
+        ['TIPODATR2', 'C', (3, 3), 'AN'],
+        # 063 = not after date / time (present if TIPODATAC = 064)
+        
+        ['QTACONS', 'C', (15, 15), 'AN'], # 12 + 3, 12.3
         
         ]
         
