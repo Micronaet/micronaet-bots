@@ -6,6 +6,8 @@ syntax = {
     'charset': 'utf-8',
     }
 
+#nextmessage = ({'BOTSID':'BGM'})
+
 structure = [
     {ID: 'BGM', MIN: 1, MAX: 10000, LEVEL: [
         {ID: 'RFF', MIN: 0, MAX: 1},

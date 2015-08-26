@@ -1,4 +1,5 @@
 # mapping-script
+import bots.transform as transform
 
 def main(inn, out):
     '''
@@ -12,13 +13,23 @@ def main(inn, out):
     
     out.ta_info contains a python dict with information about out message
     '''
+    # -------------------------------------------------------------------------
+    #                               BGM
+    # -------------------------------------------------------------------------
+    # TODO read fields from structure instead of load in tuple
+    BGM_fields = (
+        'ID-EDI-MITT-1', 'ID-EDI-MITT-2', 'ID-EDI-MITT-3',
+        'ID-EDI-DEST-1', 'ID-EDI-DEST-2', 'ID-EDI-DEST-3',
+        'TIPODOC', 'NUMDOC', 'DATADOC', 'ORADOC',
+        'CODAZION', 'FLAGIMPE', 'TIPORD',
+        )
 
-    out.put(
-        {'BOTSID': 'BGM', 'ID-EDI-MITT-1': 
-            inn.get(
-                {'BOTSID': 'BGM', 'ID-EDI-MITT-1': None})
-        }        
+    for field in BGM_fields:
+        out.put({'BOTSID': 'BGM', field: 
+            inn.get({'BOTSID': 'BGM', field: None})})
+    
     # TODO Go ahead!    
+    #transform.inn2out(inn, out)
     '''
     out.put(
         {'BOTSID': 'HEA', 'RECEIVER': inn.ta_info['topartner']})
