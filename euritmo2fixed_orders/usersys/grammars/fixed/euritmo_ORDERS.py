@@ -3,7 +3,7 @@ from bots.botsconfig import *
 
 # Syntax: Parameters for translation.
 syntax = {
-    'charset': 'us-ascii',
+    'charset': 'utf-8',
     }
 
 structure = [
@@ -25,13 +25,15 @@ structure = [
         {ID: 'FTX', MIN: 0, MAX: 5},
         {ID: 'PAT', MIN: 0, MAX: 10},
         {ID: 'TOD', MIN: 0, MAX: 5, LEVEL: [
-            {ID: 'MEA', MIN: 0, MAX: 99},
-            {ID: 'PAC', MIN: 0, MAX: 9999},
-            {ID: 'DTR', MIN: 0, MAX: 99},
-            {ID: 'ALD', MIN: 0, MAX: 99},
-            {ID: 'FTL', MIN: 0, MAX: 99},
-            {ID: 'LOC', MIN: 0, MAX: 9999, LEVEL: [
-                {ID: 'DTL', MIN: 0, MAX: 9999},
+            {ID: 'LIN', MIN: 1, MAX: 999, LEVEL: [
+                {ID: 'MEA', MIN: 0, MAX: 99},
+                {ID: 'PAC', MIN: 0, MAX: 9999},
+                {ID: 'DTR', MIN: 0, MAX: 99},
+                {ID: 'ALD', MIN: 0, MAX: 99},
+                {ID: 'FTL', MIN: 0, MAX: 99},
+                {ID: 'LOC', MIN: 0, MAX: 9999, LEVEL: [
+                    {ID: 'DTL', MIN: 0, MAX: 9999},
+                    ]},
                 ]},
             ]},
         {ID: 'CNT', MIN: 0, MAX: 1},
@@ -54,8 +56,8 @@ recorddefs = {
 
         # ID-EDI-MITT: # TODO Create a structured field?
         ['ID-EDI-MITT-1', 'M', (35, 35), 'AN'], # ID sender Piva o EAN/UCC
-        ['ID-EDI-MITT-2', 'C', (35, 35), 'AN'],
-        ['ID-EDI-MITT-3', 'C', (35, 35), 'AN'],
+        ['ID-EDI-MITT-2', 'C', (4, 4), 'AN'],
+        ['ID-EDI-MITT-3', 'C', (14, 14), 'AN'],
 
         # ID-EDI-DEST:
         ['ID-EDI-DEST-1', 'M', (35, 35), 'AN'], # ID sender Piva o EAN/UCC
@@ -63,7 +65,8 @@ recorddefs = {
         ['ID-EDI-DEST-3', 'C', (14, 14), 'AN'],
 
         ['TIPODOC', 'M', (6, 6), 'AN'], # ORDERS ORDERSP ORDCHG
-        ['NUMODOC', 'M', (35, 35), 'AN'],
+        ['NUMDOC', 'M', (35, 35), 'AN'],
+        ['DATADOC', 'M', (8, 8), 'AN'], # CCYYMMDD
         ['ORADOC', 'C', (4, 4), 'AN'], # HHMM
 
         ['CODAZION', 'C', (3, 3), 'AN'],

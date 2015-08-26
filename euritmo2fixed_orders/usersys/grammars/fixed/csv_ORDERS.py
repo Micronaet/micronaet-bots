@@ -3,7 +3,7 @@ from bots.botsconfig import *
 
 # Syntax: Parameters for translation. 
 syntax = { 
-    'charset': 'us-ascii',
+    'charset': 'utf-8',
     }
 
 structure = [{
