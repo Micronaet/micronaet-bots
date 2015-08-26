@@ -630,10 +630,42 @@ recorddefs = {
     # Tale record non viene convertito verso partner che usino il subset
     # Indicod basato sulla directory 90.1 e perciò ne e’ sconsigliato l’uso.
     'FTL': [
-        ['BOTSID', 'M', (3, 3), 'AN'], # FTL
-        
+        ['BOTSID', 'M', (3, 3), 'AN'], # FTL        
         ['NOTE', 'M', (140, 140), 'AN'],
+        ]
+
+    # -------------------------------------------------------------------------
+    #                LOC Delivery point information (article level)
+    # -------------------------------------------------------------------------
+    'LOC': [
+        ['BOTSID', 'M', (3, 3), 'AN'], # LOC
+        ['CODCONS', 'M', (17, 17), 'AN'], # EAN / UCC VAT
+        ['QCODCONS', 'M', (3, 3), 'AN'],
+        # 14 = EAN / UCC
+        # VA = VAT
+        # 91 = Vendor assigned code
+        # 92 = Customer assigned code
+        # ZZ = 
         
+        # Delivery point:
+        ['RAGSOCD', 'C', (70, 70), 'AN'], 
+        ['INDIRD', 'C', (70, 70), 'AN'],
+        ['CITTAD', 'C', (35, 35), 'AN'],
+        ['PROVD', 'C', (9, 9), 'AN'], # Province code
+        ['CAPD', 'C', (9, 9), 'AN'],
+        ['NAZIOD', 'C', (3, 3), 'AN'], # Country code
+        
+        ['QTASPLIT', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 > splitted q.       
+        ['UDMQORD', 'C', (3, 3), 'AN'],
+        # CT = Pack
+        # PCE = Piece
+        # KGM = Kg
+        # MTR = Meter
+        # MTK = MQ
+        # LTR = Liter
+        # CU = Consumer unit
+        # TU = Trade unit
+        ]
         
         
         
