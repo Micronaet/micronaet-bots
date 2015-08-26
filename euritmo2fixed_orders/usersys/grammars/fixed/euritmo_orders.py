@@ -585,7 +585,7 @@ recorddefs = {
     #                  ALD Discount or charge information
     # -------------------------------------------------------------------------
     'ALD': [
-        ['BOTSID', 'M', (3, 3), 'AN'], # ALD'
+        ['BOTSID', 'M', (3, 3), 'AN'], # ALD
         ['INDSCADD', 'M', (3, 3), 'AN'],
         # A = Discount
         # C = Charge
@@ -618,17 +618,21 @@ recorddefs = {
         # Blank if discount in line
         # X31 if amount is a unit discount 
         # No 901
+        ]
         
+    # -------------------------------------------------------------------------
+    #                    FTL Note for document line
+    # -------------------------------------------------------------------------
+    # Poiché nel subset Indicod basato sulla directory 90.1 non esiste segmento
+    # FTX a livello di riga dettaglio, non esiste corrispondenza tra il record 
+    # user FTL e un record di flat/standard.
+    # E’ previsto per uso futuro nella directory 96A.
+    # Tale record non viene convertito verso partner che usino il subset
+    # Indicod basato sulla directory 90.1 e perciò ne e’ sconsigliato l’uso.
+    'FTL': [
+        ['BOTSID', 'M', (3, 3), 'AN'], # FTL
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        ['NOTE', 'M', (140, 140), 'AN'],
         
         
         
