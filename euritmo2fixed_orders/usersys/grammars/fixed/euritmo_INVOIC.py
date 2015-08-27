@@ -445,6 +445,49 @@ recorddefs = {
     'DES': [
         ['BOTSID', 'M', (3, 3), 'AN'],
         ['DESCR', 'M', (175, 175), 'AN'],
+        ],
+
+    # -------------------------------------------------------------------------
+    #                      RFN Accredit note reference
+    # -------------------------------------------------------------------------
+    'RFN': [
+        ['BOTSID', 'M', (3, 3), 'AN'],
+        
+        ['TIPORIF', 'C', (3, 3), 'AN'],
+        # IV = Fattura
+        # ZZ = Concordato fra le parti
+        # CD = Nota di credito
+        # DL = Nota di debito
+        # ALQ = Numero bolla di reso
+        
+        ['RIFACCADD', 'C', (35, 35), 'AN'], # EAN / UCC / TU
+        ['DATARIF', 'C', (8, 8), 'AN'],
+        ],
                 
-                
+    # -------------------------------------------------------------------------
+    #                      TAX Tax information
+    # -------------------------------------------------------------------------
+    'TAX': [
+        ['BOTSID', 'M', (3, 3), 'AN'],
+        
+        ['TIPOTASS', 'C', (3, 3), 'AN'],
+        # VAT = IVA
+        # I01 = Imposta oli lubrificanti
+        # I02 = Imposta di fabbricazione
+        # I03 = Contrassegno di stato
+        
+        ['DESCRIZ', 'C', (35, 35), 'AN'], # EAN / UCC / TU
+
+        ['CATIMP', 'C', (3, 3), 'AN'],
+        # Vedi elenco succ. inoltre:
+        # S = Soggetto a tassazione
+        # X = Esente
+        # G = Non imp. Art. 8
+        # E = Restanti non imp./esclusi
+        # H = Aliquota massima
+        # Z = esente
+        
+        ['ALIQIVA', 'C', (7, 7), 'AN'], # 3.4
+        ['IMPORTO', 'C', (16, 16), 'AN'], # 12.3
+        ],
 
