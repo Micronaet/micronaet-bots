@@ -90,11 +90,11 @@ recorddefs = {
         # 91 = assigned from supplier code
         # 92 = assigned from customer code
 
-        ['RAGSOCF', 'C', (70, 70), 'AN'], # Supplier
-        ['INDIRF', 'C', (70, 70), 'AN'],
-        ['CITTAF', 'C', (35, 35), 'AN'],
-        ['PROVF', 'C', (9, 9), 'AN'],
-        ['CAPF', 'C', (9, 9), 'AN'],
+        ['RAGSOCF', 'M', (70, 70), 'AN'], # Supplier
+        ['INDIRF', 'M', (70, 70), 'AN'],
+        ['CITTAF', 'M', (35, 35), 'AN'],
+        ['PROVF', 'M', (9, 9), 'AN'],
+        ['CAPF', 'M', (9, 9), 'AN'],
         ['NAZIOF', 'C', (3, 3), 'AN'], # National code
 
         ['PIVANAZF', 'M', (35, 35), 'AN'],
@@ -144,7 +144,7 @@ recorddefs = {
     #              NAP Payers information if different from address
     # -------------------------------------------------------------------------
     'NAP': [
-        ['BOTSID', 'M', (3, 3), 'AN'], # NAI
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAP
 
         ['CODFORP', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
         ['QCODFORP', 'M', (3, 3), 'AN'],
@@ -161,14 +161,14 @@ recorddefs = {
         ['NAZIOP', 'C', (3, 3), 'AN'], # National code
         ['PIVANAZP', 'C', (35, 35), 'AN'],
 
-        ['FILLER', 'C', (51, 51), 'AN'],
+        ['FILLER', 'C', (51, 51), 'AN'], # not used
         ]
 
     # -------------------------------------------------------------------------
     #                 NAA Who create invoice if different
     # -------------------------------------------------------------------------
     'NAA': [
-        ['BOTSID', 'M', (3, 3), 'AN'], # NAI
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAA
 
         ['CODFATA', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
         ['QCODFATA', 'M', (3, 3), 'AN'],
@@ -185,17 +185,17 @@ recorddefs = {
         ['NAZIOA', 'C', (3, 3), 'AN'], # National code
         ['PIVANAZA', 'C', (35, 35), 'AN'],
 
-        ['FILLER', 'C', (51, 51), 'AN'],
+        ['FILLER', 'C', (51, 51), 'AN'], # not used
         ]
 
     # -------------------------------------------------------------------------
     #              NAT Part that receive sheet invoice
     # -------------------------------------------------------------------------
     'NAT': [
-        ['BOTSID', 'M', (3, 3), 'AN'], # NAI
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAT
 
-        ['CODFATO', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
-        ['QCODFATO', 'M', (3, 3), 'AN'],
+        ['CODFAO', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
+        ['QCODFAO', 'M', (3, 3), 'AN'],
         # 14 = EAN / UCC
         # VA = VAT
         # 91 = code assigned by supplier
@@ -209,7 +209,7 @@ recorddefs = {
         ['NAZIOO', 'C', (3, 3), 'AN'], # National code
         ['PIVANAZO', 'C', (35, 35), 'AN'],
 
-        ['FILLER', 'C', (51, 51), 'AN'],
+        ['FILLER', 'C', (51, 51), 'AN'], # not used
         ]
 
     # -------------------------------------------------------------------------
@@ -338,7 +338,7 @@ recorddefs = {
     #                      DET Document line
     # -------------------------------------------------------------------------
     'DET': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # DET
 
         ['NUMRIGA', 'C', (6, 6), 'AN'],
         ['IDSOTTOR', 'C', (3, 3), 'AN'],
@@ -350,7 +350,7 @@ recorddefs = {
         ['TIPCODCU', 'C', (3, 3), 'AN'],
         ['CODEANTU', 'C', (35, 35), 'AN'], # EAN / UCC / TU
         ['CODFORTU', 'C', (35, 35), 'AN'], # EAN / UCC / TU
-        ['CODDISTTU', 'C', (35, 35), 'AN'], # EAN / UCC / TU
+        ['CODDISTU', 'C', (35, 35), 'AN'], # EAN / UCC / TU
 
         ['TIPQUANT', 'M', (3, 3), 'AN'],
         # L01 = Vendita
@@ -443,15 +443,15 @@ recorddefs = {
     #                      DES Line description
     # -------------------------------------------------------------------------
     'DES': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
-        ['DESCR', 'M', (175, 175), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # DES
+        ['DESCR', 'C', (175, 175), 'AN'],
         ],
 
     # -------------------------------------------------------------------------
     #                      RFN Accredit note reference
     # -------------------------------------------------------------------------
     'RFN': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # RFN
         
         ['TIPORIF', 'C', (3, 3), 'AN'],
         # IV = Fattura
@@ -468,7 +468,7 @@ recorddefs = {
     #                      TAX Tax information
     # -------------------------------------------------------------------------
     'TAX': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # TAX
         
         ['TIPOTASS', 'C', (3, 3), 'AN'],
         # VAT = IVA
@@ -525,7 +525,7 @@ recorddefs = {
     #dovrà inserire la dichiarazione “contributo per la gestione dei PFU 
     #assolto".
     'ALD': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # ALD
 
         ['INDSCADD', 'M', (3, 3), 'AN'],
         # A = Sconto
@@ -571,7 +571,7 @@ recorddefs = {
     #                  NAD Destination or delivery point reference
     # -------------------------------------------------------------------------
     'NAD': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAD
 
         ['CODCONS', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
         ['QCODCONS', 'M', (3, 3), 'AN'],
@@ -597,7 +597,7 @@ recorddefs = {
     #                  NAE Rif. emitt. DDT if different
     # -------------------------------------------------------------------------
     'NAE': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAE
 
         ['CODEMITT', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
         ['QCODEMITT', 'M', (3, 3), 'AN'],
@@ -612,14 +612,14 @@ recorddefs = {
         ['PROVE', 'M', (9, 9), 'AN'],
         ['CAPE', 'M', (9, 9), 'AN'],
         ['NAZIOE', 'C', (3, 3), 'AN'], # National code
-        ['FILLER', 'C', (86, 86), 'AN'], 
+        ['FILLER', 'C', (86, 86), 'AN'], # not used
         ],        
 
     # -------------------------------------------------------------------------
     #                  NAR Rif. emitt. DDT if different
     # -------------------------------------------------------------------------
     'NAR': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAR
 
         ['CODCESS', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
         ['QCODCESS', 'M', (3, 3), 'AN'],
@@ -634,14 +634,14 @@ recorddefs = {
         ['PROVC', 'M', (9, 9), 'AN'],
         ['CAPC', 'M', (9, 9), 'AN'],
         ['NAZIOC', 'C', (3, 3), 'AN'], # National code
-        ['FILLER', 'C', (86, 86), 'AN'], 
+        ['FILLER', 'C', (86, 86), 'AN'], # not used
         ],                
 
     # -------------------------------------------------------------------------
     #                  NAR Rif. emitt. DDT if different
     # -------------------------------------------------------------------------
     'NAM': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAM
 
         ['CODMAGP', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
         ['QCODMAGP', 'M', (3, 3), 'AN'],
@@ -660,14 +660,14 @@ recorddefs = {
         ['NUMBOLLA', 'C', (35, 35), 'AN'],
         ['DATABOLL', 'C', (8, 8), 'AN'],
 
-        ['FILLER', 'C', (43, 43), 'AN'], 
+        ['FILLER', 'C', (43, 43), 'AN'], # not used
         ],                        
 
     # -------------------------------------------------------------------------
     #                  NAF Ref. for delivery
     # -------------------------------------------------------------------------
     'NAF': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAF
 
         ['CODSPED', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
         ['QCODSPED', 'M', (3, 3), 'AN'],
@@ -686,14 +686,14 @@ recorddefs = {
         ['NUMBOLLA', 'C', (35, 35), 'AN'],
         ['DATABOLL', 'C', (8, 8), 'AN'],
 
-        ['FILLER', 'C', (43, 43), 'AN'], 
+        ['FILLER', 'C', (43, 43), 'AN'], # not used
         ],                                
 
     # -------------------------------------------------------------------------
     #                  NAF Ref. for refund part 
     # -------------------------------------------------------------------------
     'NAX': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # NAX
 
         ['CODENTE', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
         ['QCODENTE', 'M', (3, 3), 'AN'],
@@ -712,14 +712,15 @@ recorddefs = {
         ['NUMBOLLA', 'C', (35, 35), 'AN'],
         ['DATABOLL', 'C', (8, 8), 'AN'],
 
-        ['FILLER', 'C', (43, 43), 'AN'], 
+        ['NUMORD', 'C', (35, 35), 'AN'],
+        ['DATAORD', 'C', (8, 8), 'AN'],
         ],                                        
         
     # -------------------------------------------------------------------------
     #                  FTL Note document line
     # -------------------------------------------------------------------------
     'FTL': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # FTL
 
         ['TIPONOTA', 'C', (3, 3), 'AN'],
         # Se il testo libero è relativo al contributo CONAI o al contributo
@@ -731,7 +732,7 @@ recorddefs = {
     #                  FTT Summary note
     # -------------------------------------------------------------------------
     'FTT': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # FTT
 
         ['TIPONOTA', 'C', (3, 3), 'AN'],
         # Se il testo libero è relativo al contributo CONAI o al contributo
@@ -743,7 +744,7 @@ recorddefs = {
     #                  ALT Discount or charge information
     # -------------------------------------------------------------------------
     'ALT': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # ALT
         ['INDSCADD', 'M', (3, 3), 'AN'],
         # A = Sconto
         # C = Addebito
@@ -782,12 +783,12 @@ recorddefs = {
     #                  IVA Subtotals VAT
     # -------------------------------------------------------------------------
     'IVA': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # IVA
         ['TIPOTASS', 'C', (3, 3), 'AN'],
         
         ['DESCRIZ', 'M', (35, 35), 'AN'],
         ['CATIMP', 'C', (3, 3), 'AN'],
-        ['PERC', 'C', (7, 7), 'AN'], # 3.4
+        ['ALIQIVA', 'C', (7, 7), 'AN'], # 3.4
         ['SIMPONIB', 'C', (16, 16), 'AN'], # +12.3
         ['SIMPORTO', 'C', (16, 16), 'AN'], # +12.3
         ],        
@@ -796,7 +797,7 @@ recorddefs = {
     #                  TMA Subtotals VAT
     # -------------------------------------------------------------------------
     'TMA': [
-        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['BOTSID', 'M', (3, 3), 'AN'], # TMA
 
         ['TOTDOC1', 'M', (16, 16), 'AN'], # +12.3
         ['IMPOSTA1', 'M', (16, 16), 'AN'], # +12.3
