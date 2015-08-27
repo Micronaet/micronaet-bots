@@ -491,3 +491,78 @@ recorddefs = {
         ['IMPORTO', 'C', (16, 16), 'AN'], # 12.3
         ],
 
+    # -------------------------------------------------------------------------
+    #                      ALD Tax information
+    # -------------------------------------------------------------------------
+    #Nota:
+    #CONTRIBUTO RAEE (WEEE)
+    #A seguito della Direttiva RAEE recepita in Italia con Dlgs 151/05 del 
+    #25/07/05 che regolamenta lo smaltimento dei rifiuti elettrotecnici ed 
+    #elettronici (per i prodotti elencati nelle categorie dell’allegato 1A del
+    #testo di legge), è possibile riportare il costo (così come sul documento 
+    #cartaceo) di tale contributo all'interno del segmento ALD valorizzando 
+    #il campo TIPOSCADD = "AEO" (Eco contributo RAEE – WEEE) ed il relativo 
+    #importo nel campo IMPORTO.
+    
+    #Nota:
+    #CONTRIBUTO CONAI E CONTRIBUTO GESTIONE PFU
+    #Il codice qualificatore "VEJ = protezione ambientale o servizio di 
+    #smaltimento", utilizzato per indicare il contributo CONAI, può anche 
+    #essere utilizzato per indicare il contributo ambientale per la gestione 
+    #degli pneumatici fuori uso (PFU). Il DM n. 82 del 11/04/11 (pubblicato in
+    #gazzetta ufficiale n. 131 del 08/06/11) richiede infatti ai produttori di 
+    #pneumatici l’indicazione del contributo in oggetto in modo chiaro e 
+    #distinto in fattura, differenziato per le diverse tipologie di pneumatici
+    #(allegato E del DM n. 82 del 11/04/11).
+    #Nel caso si dovesse indicare in fattura sia il contributo CONAI sia il 
+    #contributo per la gestione dei PFU è possibile ripetere il segmento 
+    #indicando con lo stesso qualificatore (VEJ) sia il contributo CONAI che il    
+    #contributo per la gestione dei PFU. Più in particolare, per il contributo
+    #per la gestione dei PFU si dovrà utilizzare il segmento ALD, nella stessa 
+    #modalità con la quale viene utilizzato per la gestione del contributo
+    #CONAI; quindi sarà da inserire il qualificatore AAI nel campo TIPONOTA 
+    #del segmento FTL, e successivamente nel campo NOTE del segmento FTL si 
+    #dovrà inserire la dichiarazione “contributo per la gestione dei PFU 
+    #assolto".
+    'ALD': [
+        ['BOTSID', 'M', (3, 3), 'AN'],
+
+        ['INDSCADD', 'M', (3, 3), 'AN'],
+        # A = Sconto
+        # C = Addebito
+        # N = Cond. Speciale
+        
+        ['DESCR', 'C', (35, 35), 'AN'], # EAN / UCC / TU
+        ['INDSEQ', 'C', (3, 3), 'AN'],
+
+        ['TIPOSCADD', 'C', (6, 6), 'AN'],
+        # DI = Sconto incondizionato
+        # PC = Imballo
+        # FI = Oneri finanziari
+        # IS = Rimborso bolli per fattura (servizi in fattura)
+        # FC = Costo trasporto
+        # VAB = Sconto carico (sconto volume)
+        # SER = Servizi
+        # TD = Sconto commerciale
+        # PAD = Sconto promozionale
+        # RAD = Cauzione vuoto
+        # VEJ = Protezione ambientale o servizio di smaltimento 
+        # X14 = Attività promozionali preferenziali
+        # 64E = Premi
+        # EAB = Sconto pagamento (vecchio codice X01)
+        # X13 = Ammontare imponibile soggetto a sconto
+        # Inoltre il campo può non essere valorizzato, indicando abbuono o        
+        # addebito generico
+        # AEO = Eco contributo
+        # RAEE (WEEE)
+        # SIAE = Addebito SIAE
+        # SPEVTR = Contributo Stazione Sperimentale Vetro
+
+        ['IMPORTO', 'C', (16, 16), 'AN'], # +12.3
+        ['PERC', 'C', (7, 7), 'AN'], # +3.4
+        ['FLGPRZUN', 'C', (3, 3), 'AN'],
+        #Lasciare a blank se lo sconto è applicato
+        #all'importo di riga. 
+        #Assegnare "X31" se l'importo è uno sconto unitario.
+        #Non previsto nel subset 901        
+
