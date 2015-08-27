@@ -69,6 +69,7 @@ block_particularity = {
 # -----------------------------------------------------------------------------
 syntax = { 
     'charset': 'utf-8',
+    'merge': False,
     }
 
 structure = [
