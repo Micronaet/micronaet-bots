@@ -42,7 +42,6 @@ def main(inn, out):
                 item_out.put({'BOTSID': block, field:
                     item.get({'BOTSID': block, field: None})})
 
-    # TODO Go ahead!    
     #transform.inn2out(inn, out)
     '''
     out.put(
@@ -64,24 +63,7 @@ def main(inn, out):
         {'BOTSID':'HEA', 'ORDERDATE': inn.get(
             {'BOTSID': 'UNH'},
             {'BOTSID': 'DTM', 'C507.2005': '137', 'C507.2380': None})})     #get statement ONLY looks for DTM with qualifier 137
-    out.put(
-        {'BOTSID': 'HEA', 'DELIVERY_DATE': inn.get(
-            {'BOTSID': 'UNH'}, 
-            {'BOTSID': 'DTM', 'C507.2005': '2', 'C507.2380': None})})
-    out.put(
-        {'BOTSID':'HEA', 'BUYER_ID': inn.get(
-            {'BOTSID': 'UNH'}, 
-            {'BOTSID': 'NAD', '3035': 'BY', 'C082.3039': None})})
-    out.put(
-        {'BOTSID': 'HEA', 'SUPPLIER_ID': inn.get(
-            {'BOTSID': 'UNH'},
-            {'BOTSID': 'NAD', '3035': 'SU', 'C082.3039': None})})
-    out.put(
-        {'BOTSID': 'HEA', 'DELIVERYPLACE_ID': inn.get(
-             {'BOTSID': 'UNH'},
-             {'BOTSID':'NAD', '3035': 'DP', 'C082.3039': None})})
 
-    #start looping for the lines (LIN-segments)
     for lin in inn.getloop({'BOTSID': 'UNH'}, {'BOTSID': 'LIN'}): # for each LIN (nested under UNH):
         lou = out.putloop({'BOTSID': 'HEA'}, {'BOTSID': 'LIN'}) # write a fixed LIN-record
         #note that in this loop get() is used on the lin-object, and put() is used for the lou-object
@@ -94,4 +76,5 @@ def main(inn, out):
             {'BOTSID': 'IMD', 'C273.7008#1': None})})
         lou.put({'BOTSID': 'LIN', 'QUANTITY': lin.get(
             {'BOTSID':'LIN'}, 
-            {'BOTSID': 'QTY', 'C186.6063': '21', 'C186.6060': None})})'''
+            {'BOTSID': 'QTY', 'C186.6063': '21', 'C186.6060': None})})
+    '''
