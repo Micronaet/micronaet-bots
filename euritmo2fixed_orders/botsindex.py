@@ -135,7 +135,7 @@ plugins = [
         'lockname': u'',
         'mdnchannel': u'',
         'parameters': u'',
-        'path': u'botssys/infile/fixed_invoice_in',
+        'path': u'botssys/infile/euritmo_invoice_in',
         'port': 0,
         'remove': False,
         'rsrv1': None,
