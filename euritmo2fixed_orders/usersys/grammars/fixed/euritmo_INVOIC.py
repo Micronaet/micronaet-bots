@@ -565,4 +565,30 @@ recorddefs = {
         #all'importo di riga. 
         #Assegnare "X31" se l'importo è uno sconto unitario.
         #Non previsto nel subset 901        
+        ],
 
+    # -------------------------------------------------------------------------
+    #                  NAD Destination or delivery point reference
+    # -------------------------------------------------------------------------
+    'NAD': [
+        ['BOTSID', 'M', (3, 3), 'AN'],
+
+        ['CODCONS', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
+        ['QCODCONS', 'M', (3, 3), 'AN'],
+        # 14 = EAN / UCC
+        # VA = VAT
+        # 91 = code assigned by supplier
+        # 92 = code assigned by customer
+
+        ['RAGSOCD', 'M', (70, 70), 'AN'],
+        ['INDIRD', 'M', (70, 70), 'AN'],
+        ['CITTAD', 'M', (35, 35), 'AN'],
+        ['PROVD', 'M', (9, 9), 'AN'],
+        ['CAPD', 'M', (9, 9), 'AN'],
+        ['NAZIOD', 'C', (3, 3), 'AN'], # National code
+
+        ['NUMBOLLA', 'C', (35, 35), 'AN'],
+        ['DATABOLL', 'C', (8, 8), 'AN'],
+        ['NUMORD', 'C', (35, 35), 'AN'],
+        ['DATAORD', 'C', (8, 8), 'AN'],
+        ],
