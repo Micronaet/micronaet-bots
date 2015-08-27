@@ -662,3 +662,29 @@ recorddefs = {
 
         ['FILLER', 'C', (43, 43), 'AN'], 
         ],                        
+
+    # -------------------------------------------------------------------------
+    #                  NAF Ref. for delivery
+    # -------------------------------------------------------------------------
+    'NAF': [
+        ['BOTSID', 'M', (3, 3), 'AN'],
+
+        ['CODSPED', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
+        ['QCODSPED', 'M', (3, 3), 'AN'],
+        # 14 = EAN / UCC
+        # VA = VAT
+        # 91 = code assigned by supplier
+        # 92 = code assigned by customer
+
+        ['RAGSOCS', 'M', (70, 70), 'AN'],
+        ['INDIRS', 'M', (70, 70), 'AN'],
+        ['CITTAS', 'M', (35, 35), 'AN'],
+        ['PROVS', 'M', (9, 9), 'AN'],
+        ['CAPS', 'M', (9, 9), 'AN'],
+        ['NAZIOS', 'C', (3, 3), 'AN'], # National code
+        
+        ['NUMBOLLA', 'C', (35, 35), 'AN'],
+        ['DATABOLL', 'C', (8, 8), 'AN'],
+
+        ['FILLER', 'C', (43, 43), 'AN'], 
+        ],                                
