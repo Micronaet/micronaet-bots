@@ -1,8 +1,11 @@
-# mapping-script
+# Mapping Script
 import bots.transform as transform
 
+# Load record def elements (use csv for destination)
+from bots.usersys.grammars.fixed.csv_ORDERS import recorddefs 
+
 def main(inn, out):
-    '''
+    """
     inn: the object for the incoming message; 
     via get() and getloop() the content of the message can be accessed.
     
@@ -12,98 +15,32 @@ def main(inn, out):
     via put() and putloop() content is written for this message.
     
     out.ta_info contains a python dict with information about out message
-    '''
-    # -------------------------------------------------------------------------
-    #                               BGM
-    # -------------------------------------------------------------------------
-    # TODO read fields from structure instead of load in tuple
-    fields = (
-        'ID-EDI-MITT-1', 'ID-EDI-MITT-2', 'ID-EDI-MITT-3',
-        'ID-EDI-DEST-1', 'ID-EDI-DEST-2', 'ID-EDI-DEST-3',
-        'TIPODOC', 'NUMDOC', 'DATADOC', 'ORADOC',
-        'CODAZION', 'FLAGIMPE', 'TIPORD',
-        )
-
-    for field in fields:
-        out.put({'BOTSID': 'BGM', field: 
-            inn.get({'BOTSID': 'BGM', field: None})})
-
-
-    # -------------------------------------------------------------------------
-    #                               NAB
-    # -------------------------------------------------------------------------
-    block = 'NAB'
-    fields = (
-        'CODBUYER', 'QCODBUY', 
-        'RAGSOCB', 'INDIRB', 'CITTAB', 'PROVB', 'CAPB', 'NAZIOB',
-        'Filler',
-        )
-
-    for item in inn.getloop({'BOTSID': 'BGM'}, {'BOTSID': block}):
-        item_out = out.putloop({'BOTSID':'BGM'}, {'BOTSID': block})
-        for field in fields:
-            item_out.put({'BOTSID': block, field:
-                item.get({'BOTSID': block, field: None})})
-
-    # -------------------------------------------------------------------------
-    #                               NAD
-    # -------------------------------------------------------------------------
-    block = 'NAD'
-    fields = (
-        'BOTSID',
-        'CODCONS',
-        'QCODCONS',
-        'RAGSOCD',
-        'INDIRD',
-        'CITTAD',
-        'PROVD',
-        'CAPD',
-        'NAZIOD',
-        'Filler',
-        )
-
-    for item in inn.getloop({'BOTSID': 'BGM'}, {'BOTSID': block}):
-        item_out = out.putloop({'BOTSID':'BGM'}, {'BOTSID': block})
-        for field in fields:
-            item_out.put({'BOTSID': block, field:
-                item.get({'BOTSID': block, field: None})})
-
-    # -------------------------------------------------------------------------
-    #                               LIN
-    # -------------------------------------------------------------------------
-    block = 'LIN'
-    fields = (
-        'NUMRIGA', 'CODEANCU', 'TIPCODCU', 'CODEANTU', 'CODFORTU',
-        'CODDISTU', 'DESART', 'FLINPROM', 'QTAORD', 'UDMQORD',
-        'PRZUNI', 'TIPOPRZ', 'UDMPRZUN',
-        # TODO currently disabled till information
-        #'NRCUINTU', 'CODAZIOL', 'QTACONF', 'UDMQCONF',
-        #'PRZUN2', 'TIPOPRZ2', 'UDMPRZUN2',        
-        )
-
-    for item in inn.getloop({'BOTSID': 'BGM'}, {'BOTSID': block}):
-        item_out = out.putloop({'BOTSID': 'BGM'}, {'BOTSID': block})
-        # Note: get() in lin, put() on lou
-        for field in fields:
-            item_out.put({'BOTSID': block, field:
-                item.get({'BOTSID': block, field: None})})
-
-    # TODO go ahead
-
-
-
-    # -------------------------------------------------------------------------
-    #                               CNT
-    # -------------------------------------------------------------------------
-    #fields = (
-    #    'BOTSID', 'QTAORDT', 'UDMQORDT', 'NUMLINT',
-    #    )
-
-    #for field in fields:
-    #    out.put({'BOTSID': 'BGM', field: 
-    #        inn.get({'BOTSID': 'BGM', field: None})})
-
+    """
     
+    # -------------------------------------------------------------------------
+    #                                BGM
+    # -------------------------------------------------------------------------
+    # Import BGM fields:
+    block = 'BGM'
+    fields = [field[0] for field in recorddefs[block]]
+    for field in fields:
+        out.put({'BOTSID': block, field: 
+            inn.get({'BOTSID': block, field: None})})
+
+    # -------------------------------------------------------------------------
+    #                            1-N elements
+    # -------------------------------------------------------------------------
+    # TODO Create dict with particular fields for block 
+    # ex. Date fields that need a particular format, quantity elements etc.
+    loop_block = ('NAB', 'NAD', 'NAI', 'NAC', 'NAM', 'DTM', 'CNT', 'LIN')
+    for block in loop_block:
+        fields = [field[0] for field in recorddefs[block]]
+
+        for item in inn.getloop({'BOTSID': 'BGM'}, {'BOTSID': block}):
+            item_out = out.putloop({'BOTSID':'BGM'}, {'BOTSID': block})
+            for field in fields:
+                item_out.put({'BOTSID': block, field:
+                    item.get({'BOTSID': block, field: None})})
 
     # TODO Go ahead!    
     #transform.inn2out(inn, out)
