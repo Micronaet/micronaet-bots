@@ -9,20 +9,20 @@ syntax = {
 #nextmessage = ({'BOTSID':'BGM'})
 
 structure = [
-    {ID: 'BGM', MIN: 1, MAX: 10000, LEVEL: [
+    {ID: 'BGM', MIN: 1, MAX: 1, LEVEL: [
         {ID: 'RFF', MIN: 0, MAX: 1},
         {ID: 'RFC', MIN: 0, MAX: 10},
 
-        # NAx max 5 record TODO how realize?
-        {ID: 'NAS', MIN: 0, MAX: 1, LEVEL: [
+        # NAS max 5 record TODO how realize?
+        {ID: 'NAS', MIN: 1, MAX: 1, LEVEL: [
             {ID: 'CTA', MIN: 0, MAX: 5},
             ]},
         {ID: 'NAB', MIN: 1, MAX: 1},
         {ID: 'NAD', MIN: 1, MAX: 1},
         {ID: 'NAI', MIN: 0, MAX: 1},
         {ID: 'NAC', MIN: 0, MAX: 1},
+       
         {ID: 'NAM', MIN: 0, MAX: 1},
-
         {ID: 'DTM', MIN: 1, MAX: 1},
         {ID: 'FTX', MIN: 0, MAX: 5},
         {ID: 'PAT', MIN: 0, MAX: 10},
@@ -34,7 +34,7 @@ structure = [
             {ID: 'ALD', MIN: 0, MAX: 99},
             {ID: 'FTL', MIN: 0, MAX: 99},
             {ID: 'LOC', MIN: 0, MAX: 9999, LEVEL: [
-                {ID: 'DTL', MIN: 0, MAX: 9999},
+                {ID: 'DTL', MIN: 0, MAX: 99},
                 ]},
             ]},
         {ID: 'CNT', MIN: 0, MAX: 1},
@@ -56,24 +56,26 @@ recorddefs = {
         ['BOTSID', 'M', (3, 3), 'AN'], # BGM (BOTSID)
 
         # ID-EDI-MITT: # TODO Create a structured field?
-        ['ID-EDI-MITT-1', 'M', (35, 35), 'AN'], # ID sender Piva o EAN/UCC
+        ['ID-EDI-MITT-1', 'M', (35, 35), 'AN'], # ID sender VAT o EAN/UCC
         ['ID-EDI-MITT-2', 'C', (4, 4), 'AN'],
         ['ID-EDI-MITT-3', 'C', (14, 14), 'AN'],
 
         # ID-EDI-DEST:
-        ['ID-EDI-DEST-1', 'M', (35, 35), 'AN'], # ID sender Piva o EAN/UCC
+        ['ID-EDI-DEST-1', 'M', (35, 35), 'AN'], # ID sender VAT o EAN/UCC
         ['ID-EDI-DEST-2', 'C', (4, 4), 'AN'],
         ['ID-EDI-DEST-3', 'C', (14, 14), 'AN'],
 
-        ['TIPODOC', 'M', (6, 6), 'AN'], # ORDERS ORDERSP ORDCHG
+        ['TIPODOC', 'M', (6, 6), 'AN'], # ORDERS(per ordine normale) ORDERSP ORDCHG
         ['NUMDOC', 'M', (35, 35), 'AN'],
         ['DATADOC', 'M', (8, 8), 'AN'], # CCYYMMDD
         ['ORADOC', 'C', (4, 4), 'AN'], # HHMM
 
         ['CODAZION', 'C', (3, 3), 'AN'],
+        # obbligatoriamente assente in ORDERS
         # ORDER: C, CONF: M [R(ifiutato), A(ccettato), M(odificato)]
 
         ['FLAGIMPE', 'C', (3, 3), 'AN'],
+        # obbligatoriamente assente in ORDERS
         # ORDER: C, CONF: M [X99 = impegn., blank= non impegn.]
 
         ['TIPORD', 'C', (3, 3), 'AN'],
@@ -357,7 +359,7 @@ recorddefs = {
         ['PERC', 'C', (7, 7), 'AN'], # 3 + 4 N for 3.4
         ['DESCRIZ', 'C', (35, 35), 'AN'], # Payment description
 
-        ['BANCADOC', 'C', (35, 35), 'AN'],
+        ['BANCACOD', 'C', (35, 35), 'AN'],
         # Format: ABI(5) - CAB(5) - C/C(23)
         ['BANCADESC', 'C', (35, 35), 'AN'], # Bank name
         ['FACTOR', 'C', (35, 35), 'AN'],
@@ -390,7 +392,7 @@ recorddefs = {
         # 2 = Delivery condition
         # 3 = Cost anc delivery condition
 
-        ['CODCONT', 'M', (3, 3), 'AN'],
+        ['CODCOST', 'M', (3, 3), 'AN'],
         # Transport costs to:
         # PP = sender
         # CC = receiver
@@ -409,7 +411,7 @@ recorddefs = {
         ['NUMRIGA', 'C', (6, 6), 'AN'], # Number of line # TODO N
         ['CODEANCU', 'C', (35, 35), 'AN'], # EAN / UCC UPC of CU
 
-        ['TIPOCODCU', 'C', (3, 3), 'AN'],
+        ['TIPCODCU', 'C', (3, 3), 'AN'],
         # EN = code EAN / UCC
         # UP = UPC
 
@@ -450,7 +452,7 @@ recorddefs = {
         # TU = Trade unit
         # Note: Mandatory if present PRZUNI
 
-        ['NRCUINTU', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N
+        ['NRCUINTU', 'M', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N
         ['CODAZIOL', 'C', (3, 3), 'AN'],
         # Mandatory NOT present in order
         # Mandatory present in order
@@ -544,6 +546,7 @@ recorddefs = {
         # 09 = Pallet to return (EAN UCC code)
         # 201 = Pallet ISO 1 (EAN UCC code)
         # PK = Pack
+        # PA= unita (es. pacchetti di sigarette)
         # DPE = Expositors
         # 200 = Pallet ISO 0
         # 203 = 1/4 EURO pallet
@@ -618,7 +621,7 @@ recorddefs = {
         # SPEVTR = Sperimental station glass
         ['IMPORTO', 'C', (16, 16), 'AN'], # 12 + 3, 12.3
         ['PERC', 'C', (7, 7), 'AN'], # 4 + 3, 4.3
-        ['FLGPRZUN', 'M', (3, 3), 'AN'],
+        ['FLGPRZUN', 'C', (3, 3), 'AN'],
         # Blank if discount in line
         # X31 if amount is a unit discount
         # No 901
@@ -659,7 +662,7 @@ recorddefs = {
         ['CAPD', 'C', (9, 9), 'AN'],
         ['NAZIOD', 'C', (3, 3), 'AN'], # Country code
 
-        ['QTASPLIT', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 > splitted q.
+        ['QTASPLIT', 'M', (15, 15), 'AN'], # 12 + 3, 12.3 > splitted q.
         ['UDMQORD', 'C', (3, 3), 'AN'],
         # CT = Pack
         # PCE = Piece
