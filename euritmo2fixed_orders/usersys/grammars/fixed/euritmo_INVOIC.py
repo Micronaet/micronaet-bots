@@ -716,7 +716,7 @@ recorddefs = {
         ],                                        
         
     # -------------------------------------------------------------------------
-    #                  FTL Ref. for refund part 
+    #                  FTL Note document line
     # -------------------------------------------------------------------------
     'FTL': [
         ['BOTSID', 'M', (3, 3), 'AN'],
@@ -727,4 +727,54 @@ recorddefs = {
         ['NOTE', 'M', (350, 350), 'AN'],
         ],
 
+    # -------------------------------------------------------------------------
+    #                  FTT Summary note
+    # -------------------------------------------------------------------------
+    'FTT': [
+        ['BOTSID', 'M', (3, 3), 'AN'],
+
+        ['TIPONOTA', 'C', (3, 3), 'AN'],
+        # Se il testo libero è relativo al contributo CONAI o al contributo
+        # GESTIONE PFU, assegnare 'AAI' altrimenti 'ZZZ'
+        ['NOTE', 'M', (350, 350), 'AN'],
+        ],
+
+    # -------------------------------------------------------------------------
+    #                  ALT Discount or charge informatio
+    # -------------------------------------------------------------------------
+    'ALT': [
+        ['BOTSID', 'M', (3, 3), 'AN'],
+        ['INDSCADD', 'M', (3, 3), 'AN'],
+        # A = Sconto
+        # C = Addebito
+        # N = Cond. Speciale        
+
+        ['DESCR', 'C', (35, 35), 'AN'],
+        ['INDSEQ', 'C', (3, 3), 'AN'],
         
+        ['TIPOSCADD', 'C', (6, 6), 'AN'],
+        # DI = Sconto incondizionato
+        # PC = Imballo 
+        # FI = Oneri finanziari
+        # IS = Rimborso bolli per fattura (servizi in fattura)
+        # FC = Costo trasporto 
+        # VAB = Sconto carico (sconto volume)
+        # SER = Servizi
+        # TD = Sconto commerciale
+        # PAD = Sconto promozionale
+        # RAD = Cauzione vuoto
+        # VEJ = Protezione ambientale o servizio di smaltimento
+        # X14 = Attività promozionali preferenziali
+        # 64E = Premi
+        # EAB = Sconto pagamento (vecchi codice X01)
+        # X13 = Ammontare imponibile soggetto a sconto Inoltre il campo può 
+        # non essere valorizzato, indicando abbuono o addebito generico
+        # AEO = Eco contributo
+        # RAEE (WEEE)
+        # SIAE = Addebito SIAE
+        # SPEVTR = Contributo Stazione Sperimentale Vetro
+
+        ['IMPORTO', 'C', (16, 16), 'AN'], # +12.3
+        ['PERC', 'C', (7, 7), 'AN'], # 3.4
+        ],
+                
