@@ -688,3 +688,43 @@ recorddefs = {
 
         ['FILLER', 'C', (43, 43), 'AN'], 
         ],                                
+
+    # -------------------------------------------------------------------------
+    #                  NAF Ref. for refund part 
+    # -------------------------------------------------------------------------
+    'NAX': [
+        ['BOTSID', 'M', (3, 3), 'AN'],
+
+        ['CODENTE', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
+        ['QCODENTE', 'M', (3, 3), 'AN'],
+        # 14 = EAN / UCC
+        # VA = VAT
+        # 91 = code assigned by supplier
+        # 92 = code assigned by customer
+
+        ['RAGSOCX', 'M', (70, 70), 'AN'],
+        ['INDIRX', 'M', (70, 70), 'AN'],
+        ['CITTAX', 'M', (35, 35), 'AN'],
+        ['PROVX', 'M', (9, 9), 'AN'],
+        ['CAPX', 'M', (9, 9), 'AN'],
+        ['NAZIOX', 'C', (3, 3), 'AN'], # National code
+        
+        ['NUMBOLLA', 'C', (35, 35), 'AN'],
+        ['DATABOLL', 'C', (8, 8), 'AN'],
+
+        ['FILLER', 'C', (43, 43), 'AN'], 
+        ],                                        
+        
+    # -------------------------------------------------------------------------
+    #                  FTL Ref. for refund part 
+    # -------------------------------------------------------------------------
+    'FTL': [
+        ['BOTSID', 'M', (3, 3), 'AN'],
+
+        ['TIPONOTA', 'C', (3, 3), 'AN'],
+        # Se il testo libero è relativo al contributo CONAI o al contributo
+        # GESTIONE PFU, assegnare 'AAI' altrimenti 'ZZZ'
+        ['NOTE', 'M', (350, 350), 'AN'],
+        ],
+
+        
