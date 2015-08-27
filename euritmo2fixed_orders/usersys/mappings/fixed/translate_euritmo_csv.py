@@ -32,13 +32,36 @@ def main(inn, out):
     # -------------------------------------------------------------------------
     #                               NAB
     # -------------------------------------------------------------------------
+    block = 'NAB'
     fields = (
         'CODBUYER', 'QCODBUY', 
         'RAGSOCB', 'INDIRB', 'CITTAB', 'PROVB', 'CAPB', 'NAZIOB',
         'Filler',
         )
 
-    block = 'NAB'
+    for item in inn.getloop({'BOTSID': 'BGM'}, {'BOTSID': block}):
+        item_out = out.putloop({'BOTSID':'BGM'}, {'BOTSID': block})
+        for field in fields:
+            item_out.put({'BOTSID': block, field:
+                item.get({'BOTSID': block, field: None})})
+
+    # -------------------------------------------------------------------------
+    #                               NAD
+    # -------------------------------------------------------------------------
+    block = 'NAD'
+    fields = (
+        'BOTSID',
+        'CODCONS',
+        'QCODCONS',
+        'RAGSOCD',
+        'INDIRD',
+        'CITTAD',
+        'PROVD',
+        'CAPD',
+        'NAZIOD',
+        'Filler',
+        )
+
     for item in inn.getloop({'BOTSID': 'BGM'}, {'BOTSID': block}):
         item_out = out.putloop({'BOTSID':'BGM'}, {'BOTSID': block})
         for field in fields:
@@ -50,11 +73,12 @@ def main(inn, out):
     # -------------------------------------------------------------------------
     block = 'LIN'
     fields = (
-        'NUMRIGA', 'CODEANCU', 'TIPOCODCU', 'CODEANTU', 'CODFORTU',
+        'NUMRIGA', 'CODEANCU', 'TIPCODCU', 'CODEANTU', 'CODFORTU',
         'CODDISTU', 'DESART', 'FLINPROM', 'QTAORD', 'UDMQORD',
         'PRZUNI', 'TIPOPRZ', 'UDMPRZUN',
-        'NRCUINTU', 'CODAZIOL', 'QTACONF', 'UDMQCONF',
-        'PRZUN2', 'TIPOPRZ2', 'UDMPRZUN2',        
+        # TODO currently disabled till information
+        #'NRCUINTU', 'CODAZIOL', 'QTACONF', 'UDMQCONF',
+        #'PRZUN2', 'TIPOPRZ2', 'UDMPRZUN2',        
         )
 
     for item in inn.getloop({'BOTSID': 'BGM'}, {'BOTSID': block}):

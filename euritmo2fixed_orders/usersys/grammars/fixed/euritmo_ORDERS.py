@@ -13,7 +13,7 @@ structure = [
         {ID: 'RFF', MIN: 0, MAX: 1},
         {ID: 'RFC', MIN: 0, MAX: 10},
 
-        # NAS max 5 record TODO how realize?
+        # NA* max 5 record TODO how realize?
         {ID: 'NAS', MIN: 1, MAX: 1, LEVEL: [
             {ID: 'CTA', MIN: 0, MAX: 5},
             ]},
@@ -65,22 +65,22 @@ recorddefs = {
         ['ID-EDI-DEST-2', 'C', (4, 4), 'AN'],
         ['ID-EDI-DEST-3', 'C', (14, 14), 'AN'],
 
-        ['TIPODOC', 'M', (6, 6), 'AN'], # ORDERS(per ordine normale) ORDERSP ORDCHG
+        ['TIPODOC', 'M', (6, 6), 'AN'], # ORDERS (normal order) ORDERSP ORDCHG
         ['NUMDOC', 'M', (35, 35), 'AN'],
         ['DATADOC', 'M', (8, 8), 'AN'], # CCYYMMDD
         ['ORADOC', 'C', (4, 4), 'AN'], # HHMM
 
         ['CODAZION', 'C', (3, 3), 'AN'],
-        # obbligatoriamente assente in ORDERS
-        # ORDER: C, CONF: M [R(ifiutato), A(ccettato), M(odificato)]
+        # not present ORDERS
+        # ORDER: C, CONF: M [R(efuse), A(ccept), M(odify)]
 
         ['FLAGIMPE', 'C', (3, 3), 'AN'],
-        # obbligatoriamente assente in ORDERS
-        # ORDER: C, CONF: M [X99 = impegn., blank= non impegn.]
+        # not present ORDERS
+        # ORDER: C, CONF: M [X99 = busy, blank= not busy]
 
         ['TIPORD', 'C', (3, 3), 'AN'],
         # Blank or 105 = Order (different from D90.1 > 105, D96.a > 220)
-        # 211 Blanket order (open)
+        # 211 Blank order (open)
         # 224 Urgent
         # 226 Call off order (dispos. of delivery)
         # 231 Confirm order from producer
@@ -452,13 +452,14 @@ recorddefs = {
         # TU = Trade unit
         # Note: Mandatory if present PRZUNI
 
-        ['NRCUINTU', 'M', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N
-        ['CODAZIOL', 'C', (3, 3), 'AN'],
+        # TODO Currenty not present in file received (enable after information)
+        ##['NRCUINTU', 'M', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N
+        ##['CODAZIOL', 'C', (3, 3), 'AN'],
         # Mandatory NOT present in order
         # Mandatory present in order
 
-        ['QTACONF', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N
-        ['UDMQCONF', 'C', (3, 3), 'AN'],
+        ##['QTACONF', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N
+        ##['UDMQCONF', 'C', (3, 3), 'AN'],
         # CT = Pack
         # PCE = Piece
         # KGM = Kg
@@ -469,12 +470,12 @@ recorddefs = {
         # TU = Trade unit
         # Note: Mandatory if present QTACONF
 
-        ['PRZUN2', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N
-        ['TIPOPRZ2', 'C', (3, 3), 'AN'],
+        ##['PRZUN2', 'C', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N
+        ##['TIPOPRZ2', 'C', (3, 3), 'AN'],
         # AAA= Net
         # AAB = Lord
         # Nota: Mandatory if PRZUNI
-        ['UDMPRZUN2', 'C', (3, 3), 'AN'],
+        ##['UDMPRZUN2', 'C', (3, 3), 'AN'],
         # CT = Pack
         # PCE = Piece
         # KGM = Kg
