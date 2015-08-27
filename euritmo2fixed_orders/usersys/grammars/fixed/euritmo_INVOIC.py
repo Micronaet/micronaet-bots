@@ -592,3 +592,25 @@ recorddefs = {
         ['NUMORD', 'C', (35, 35), 'AN'],
         ['DATAORD', 'C', (8, 8), 'AN'],
         ],
+
+    # -------------------------------------------------------------------------
+    #                  NAE Rif. emitt. DDT if different
+    # -------------------------------------------------------------------------
+    'NAE': [
+        ['BOTSID', 'M', (3, 3), 'AN'],
+
+        ['CODEMITT', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
+        ['QCODEMITT', 'M', (3, 3), 'AN'],
+        # 14 = EAN / UCC
+        # VA = VAT
+        # 91 = code assigned by supplier
+        # 92 = code assigned by customer
+
+        ['RAGSOCE', 'M', (70, 70), 'AN'],
+        ['INDIRE', 'M', (70, 70), 'AN'],
+        ['CITTAE', 'M', (35, 35), 'AN'],
+        ['PROVE', 'M', (9, 9), 'AN'],
+        ['CAPE', 'M', (9, 9), 'AN'],
+        ['NAZIOE', 'C', (3, 3), 'AN'], # National code
+        ['FILLER', 'C', (86, 86), 'AN'], 
+        ],        
