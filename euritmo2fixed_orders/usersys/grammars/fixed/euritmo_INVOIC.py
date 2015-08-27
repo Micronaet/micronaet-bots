@@ -614,3 +614,25 @@ recorddefs = {
         ['NAZIOE', 'C', (3, 3), 'AN'], # National code
         ['FILLER', 'C', (86, 86), 'AN'], 
         ],        
+
+    # -------------------------------------------------------------------------
+    #                  NAR Rif. emitt. DDT if different
+    # -------------------------------------------------------------------------
+    'NAR': [
+        ['BOTSID', 'M', (3, 3), 'AN'],
+
+        ['CODCESS', 'M', (17, 17), 'AN'], # Ean / UCC, location, VAT
+        ['QCODCESS', 'M', (3, 3), 'AN'],
+        # 14 = EAN / UCC
+        # VA = VAT
+        # 91 = code assigned by supplier
+        # 92 = code assigned by customer
+
+        ['RAGSOCC', 'M', (70, 70), 'AN'],
+        ['INDIRC', 'M', (70, 70), 'AN'],
+        ['CITTAC', 'M', (35, 35), 'AN'],
+        ['PROVC', 'M', (9, 9), 'AN'],
+        ['CAPC', 'M', (9, 9), 'AN'],
+        ['NAZIOC', 'C', (3, 3), 'AN'], # National code
+        ['FILLER', 'C', (86, 86), 'AN'], 
+        ],                
