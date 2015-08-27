@@ -20,7 +20,7 @@ def main(inn, out):
     out.ta_info contains a python dict with information about out message
     """
     
-    # -------------------------------------------------------------------------
+    """# -------------------------------------------------------------------------
     #                                BGM
     # -------------------------------------------------------------------------
     # Import BGM fields:
@@ -44,7 +44,7 @@ def main(inn, out):
             item_out = out.putloop({'BOTSID':'BGM'}, {'BOTSID': block})
             for field in fields:
                 item_out.put({'BOTSID': block, field:
-                    item.get({'BOTSID': block, field: None})})
+                    item.get({'BOTSID': block, field: None})})"""
 
     #transform.inn2out(inn, out)
     '''
