@@ -38,26 +38,26 @@ def format_real(value, tuple_format, decimal=',', thousand=''):
     return value
 
 # Reach information function:
-def total_char(recorddef):
+def char_block(block):
     ''' Return total number of char of the record element passed
-        (for fixed elements so all tuples like (3, 3)
+        (for fixed elements so all tuples like (3, 3) >> 3 )
     '''
     res = 0
-    for item in recorddef:
+    for item in block:
         res += item[2] # never tuple, maybe manipulate because has extra fields
     return res
 
-def total_chat(recorddefs, block_particularity):
+def total_char_filler(recorddefs, block_particularity):
     ''' Set filler value in dict for manage filler
         Check all lenght in recorddefs
         Set in block_particularity extra space for filler (first of the list)
     '''
     
     block_length = {} 
-    for item in recorddefs:
+    for item in block_particularity: # NOTE: use partic key but search in rec.
         # only length 3 (there's a 'BOTS_1$@#%_error' block!!)
         if len(item) == 3:
-            block_length[item] = total_char(recorddefs[item])
+            block_length[item] = char_block(recorddefs[item])
     
     max_char = max(block_length.values()) + 1 # add 1 char (so filler min. 1)
     
@@ -143,11 +143,12 @@ structure = [
 # -----------------------------------------------------------------------------
 #      Add extra fields for filler line to have all same char number
 # -----------------------------------------------------------------------------
+#import pdb; pdb.set_trace()
 #for block in recorddefs:  # TODO check that is insert only once
 #    # Load data
 #    if FILLER not in recorddefs[block]:  # else nothing, yet created
 #        # Load extra info for block (es. extra space):
-#        total_chat(recorddefs, block_particularity)
+#        total_char_filler(recorddefs, block_particularity)
 #        
 #        tot = block_particularity[block][0]
 #        recorddefs[block].append([FILLER, 'C', (tot, tot), 'AN'])
