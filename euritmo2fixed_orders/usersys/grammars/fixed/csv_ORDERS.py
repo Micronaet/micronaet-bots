@@ -104,33 +104,33 @@ syntax = {
 
 structure = [
     {ID: 'BGM', MIN: 1, MAX: 10000, LEVEL: [
-        #{ID: 'RFF', MIN: 0, MAX: 1},
-        #{ID: 'RFC', MIN: 0, MAX: 10},
+        #{ID: 'RFF', MIN: 0, MAX: 1}, # TODO for promotional order?
+        #{ID: 'RFC', MIN: 0, MAX: 10}, # (contract)
 
         # NAx max 5 record TODO how realize?
-        {ID: 'NAS', MIN: 0, MAX: 1},
-        #{ID: 'NAS', MIN: 0, MAX: 1, LEVEL: [ # keep in one line
-        #    {ID: 'CTA', MIN: 0, MAX: 5},
+        {ID: 'NAS', MIN: 0, MAX: 1}, # Supplier info (was mandatory)
+        #{ID: 'NAS', MIN: 1, MAX: 1, LEVEL: [ # keep in one line
+        #    {ID: 'CTA', MIN: 0, MAX: 5}, # Contact supplier
         #    ]},
-        {ID: 'NAB', MIN: 1, MAX: 1},
-        {ID: 'NAD', MIN: 1, MAX: 1},
-        {ID: 'NAI', MIN: 0, MAX: 1}, # original not mandatory
-        {ID: 'NAC', MIN: 0, MAX: 1}, # original not mandatory
-        {ID: 'NAM', MIN: 0, MAX: 1}, # original not mandatory
+        {ID: 'NAB', MIN: 1, MAX: 1}, # Buyer
+        {ID: 'NAD', MIN: 1, MAX: 1}, # Destination
+        #{ID: 'NAI', MIN: 0, MAX: 1}, # Address invoice # TODO asking...
+        #{ID: 'NAC', MIN: 0, MAX: 1}, # Inter-delivery point
+        #{ID: 'NAM', MIN: 0, MAX: 1}, # Stock delivery info
 
-        {ID: 'DTM', MIN: 1, MAX: 1},
-        #{ID: 'FTX', MIN: 0, MAX: 5}, # original not mandatory
-        #{ID: 'PAT', MIN: 0, MAX: 10}, # original not mandatory
-        #{ID: 'TOD', MIN: 0, MAX: 5}, # original not mandatory
-        {ID: 'CNT', MIN: 0, MAX: 1}, # original not mandatory (was last element)
+        {ID: 'DTM', MIN: 1, MAX: 1}, # Delivery info
+        #{ID: 'FTX', MIN: 0, MAX: 5}, # Header extra info (note)
+        #{ID: 'PAT', MIN: 0, MAX: 10}, # Payment terms
+        #{ID: 'TOD', MIN: 0, MAX: 5}, # Delivery condition
+        #{ID: 'CNT', MIN: 0, MAX: 1}, # Summary (was last element)
         {ID: 'LIN', MIN: 1, MAX: 999},# LEVEL: [
-        #    {ID: 'MEA', MIN: 0, MAX: 99}, # original not mandatory
-        #    {ID: 'PAC', MIN: 0, MAX: 9999}, # original not mandatory
-        #    {ID: 'DTR', MIN: 0, MAX: 99}, # original not mandatory
-        #    {ID: 'ALD', MIN: 0, MAX: 99}, # original not mandatory
-        #    {ID: 'FTL', MIN: 0, MAX: 99}, # original not mandatory
-        #    {ID: 'LOC', MIN: 0, MAX: 9999, LEVEL: [
-        #        {ID: 'DTL', MIN: 0, MAX: 9999}, # original not mandatory
+        #    {ID: 'MEA', MIN: 0, MAX: 99}, # measure
+        #    {ID: 'PAC', MIN: 0, MAX: 9999}, # package
+        #    {ID: 'DTR', MIN: 0, MAX: 99}, # delivery date for line
+        #    {ID: 'ALD', MIN: 0, MAX: 99}, # discount for line
+        #    {ID: 'FTL', MIN: 0, MAX: 99}, # Note for line
+        #    {ID: 'LOC', MIN: 0, MAX: 9999, LEVEL: [ # delivery for line
+        #        {ID: 'DTL', MIN: 0, MAX: 9999}, # delivery date for line
         #        ]},
         #    ]},
         ]},

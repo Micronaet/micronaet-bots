@@ -33,7 +33,13 @@ def main(inn, out):
     # TODO Create dict with particular fields for block 
     # ex. Date fields that need a particular format, quantity elements etc.
     loop_block = (
-        'NAS', 'NAB', 'NAD', 'NAI', 'NAC', 'NAM', 'DTM', 'CNT', 'LIN')
+        # 'RFF', 'RFC',
+        #'NAS', # > 'CTA' (not needed in accounting as in mandatory)
+        'NAB', 'NAD', 
+        #'NAI', 'NAC', 'NAM', 
+        'DTM', 
+        #'CNT', 
+        'LIN',)
     for block in loop_block:
         fields = [field[0] for field in recorddefs[block]]
 
