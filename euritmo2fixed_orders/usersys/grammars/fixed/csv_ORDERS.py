@@ -6,6 +6,7 @@ from euritmo_ORDERS import recorddefs # same as euritmo
 #                             Utility function:
 # -----------------------------------------------------------------------------
 # TODO: Utility function:
+# Format function:
 def format_date(value, separator='-', format_type='ISO'):
     ''' Format input date in accounting value    
         value = text value of date (8 or 6 char ISO input)
@@ -31,37 +32,66 @@ def format_real(value, tuple_format, decimal=',', thousand=''):
     '''
     return value
 
+# Reach information function:
+def total_char(recorddef):
+    ''' Return total number of char of the record element passed
+        (for fixed elements so all tuples like (3, 3)
+    '''
+    res = 0
+    for item in recorddef:
+        if item[2] == tuple:
+            res += item[2][0] # equal to [1]
+        else:
+            pass # raise error    
+    return res
+
+def total_chat(recorddefs, block_particularity):
+    ''' Set filler value in dict for manage filler
+        Check all lenght in recorddefs
+        Set in block_particularity extra space for filler (first of the list)
+    '''
+    
+    block_length = {} 
+    for item recorddefs:
+        block_length[item] = total_char(recorddefs[item])
+    
+    max_char = max(block_length.values()) + 1 # add 1 char (so filler min. 1)
+    
+    for item block_particularity:
+        block_particularity[item][0] = max_char - block_length[item]        
+    return
+
 # Set extra information for every block elements, format:
 # k = block: value = (
 #    date, hour, real, fill extra space)
 block_particularity = { 
-    'BGM': ((), (), (), 0, ),
-    #'RFF': ((), (), (), 0, ),
-    #'RFC': ((), (), (), 0, ),
+    'BGM': [0, (), (), (), ],
+    #'RFF': [0, (), (), (), ],
+    #'RFC': [0, (), (), (), ],
 
-    #'NAS': ((), (), (), 0, ),
-    #'CTA': ((), (), (), 0, ),
+    #'NAS': [0, (), (), (), ],
+    #'CTA': [0, (), (), (), ],
 
-    'NAB': ((), (), (), 0, ),
-    'NAD': ((), (), (), 0, ),
-    'NAI': ((), (), (), 0, ),
-    'NAC': ((), (), (), 0, ),
-    'NAM': ((), (), (), 0, ),
+    'NAB': [0, (), (), (), ],
+    'NAD': [0, (), (), (), ],
+    'NAI': [0, (), (), (), ],
+    'NAC': [0, (), (), (), ],
+    'NAM': [0, (), (), (), ],
 
-    'DTM': ((), (), (), 0, ),
-    #'FTX': ((), (), (), 0, ),
-    #'PAT': ((), (), (), 0, ),
-    #'TOD': ((), (), (), 0, ),
-    'CNT': ((), (), (), 0, ),
+    'DTM': [0, (), (), (), ],
+    #'FTX': [0, (), (), (), ],
+    #'PAT': [0, (), (), (), ],
+    #'TOD': [0, (), (), (), ],
+    'CNT': [0, (), (), (), ],
 
-    'LIN': ((), (), (), 0, ),
-    #'MEA': ((), (), (), 0, ),
-    #'PAC': ((), (), (), 0, ),
-    #'DTR': ((), (), (), 0, ),
-    #'ALD': ((), (), (), 0, ),
-    #'FTL': ((), (), (), 0, ),
-    #'LOC': ((), (), (), 0, ),
-    #'DTL': ((), (), (), 0, ),
+    'LIN': [0, (), (), (), ],
+    #'MEA': [0, (), (), (), ],
+    #'PAC': [0, (), (), (), ],
+    #'DTR': [0, (), (), (), ],
+    #'ALD': [0, (), (), (), ],
+    #'FTL': [0, (), (), (), ],
+    #'LOC': [0, (), (), (), ],
+    #'DTL': [0, (), (), (), ],
     }
     
 # -----------------------------------------------------------------------------
@@ -109,5 +139,9 @@ structure = [
 # -----------------------------------------------------------------------------
 #      Add extra fields for filler line to have all same char number
 # -----------------------------------------------------------------------------
-#TODO
-#recorddefs['BGM'].append(['FillerBGM', 'C', (57, 57), 'AN'])
+# TODO
+#for block in recorddefs:  # TODO check that is insert only once
+#    # Load data
+#    tot = block_particularity[block]
+#    total_chat(recorddefs, block_particularity)
+    recorddefs[block].append(['Account_filler', 'C', (tot, tot), 'AN'])
