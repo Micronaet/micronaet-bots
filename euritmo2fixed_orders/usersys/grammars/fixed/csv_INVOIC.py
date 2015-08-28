@@ -25,7 +25,7 @@ structure = [
         #    {ID: 'LOC', MIN: 0, MAX: 2}, # Delivery point
         #    ]},
         {ID: 'DET', MIN: 1, MAX: 1, LEVEL: [
-        #    {ID: 'DES', MIN: 0, MAX: 10}, # Description # TODO ask
+            {ID: 'DES', MIN: 0, MAX: 10}, # Description # TODO ask
         #    {ID: 'RFN', MIN: 0, MAX: 10}, # Accredit note reference
         #    {ID: 'TAX', MIN: 0, MAX: 15}, # Tax info
         #    {ID: 'ALD', MIN: 0, MAX: 15}, # Discount line

@@ -3,7 +3,12 @@ from bots.botsconfig import *
 from euritmo_ORDERS import recorddefs # same as euritmo
 
 # -----------------------------------------------------------------------------
-#                             Utility function:
+#                             Constant declaration
+# -----------------------------------------------------------------------------
+FILLER = 'filler_field'
+
+# -----------------------------------------------------------------------------
+#                               Utility function
 # -----------------------------------------------------------------------------
 # TODO: Utility function:
 # Format function:
@@ -57,7 +62,7 @@ def total_chat(recorddefs, block_particularity):
     
     max_char = max(block_length.values()) + 1 # add 1 char (so filler min. 1)
     
-    for item block_particularity:
+    for item in block_particularity:
         block_particularity[item][0] = max_char - block_length[item]        
     return
 
@@ -99,7 +104,7 @@ block_particularity = {
 # -----------------------------------------------------------------------------
 syntax = { 
     'charset': 'utf-8',
-    'merge': False,
+    #'merge': False,
     }
 
 structure = [
@@ -139,9 +144,10 @@ structure = [
 # -----------------------------------------------------------------------------
 #      Add extra fields for filler line to have all same char number
 # -----------------------------------------------------------------------------
-# TODO
-#for block in recorddefs:  # TODO check that is insert only once
-#    # Load data
-#    tot = block_particularity[block]
-#    total_chat(recorddefs, block_particularity)
-#    recorddefs[block].append(['Account_filler', 'C', (tot, tot), 'AN'])
+import pdb; pdb.set_trace()
+for block in recorddefs:  # TODO check that is insert only once
+    # Load data
+    if FILLER not in recorddefs[block]:  # else nothing, yet created
+        tot = block_particularity[block]
+        total_chat(recorddefs, block_particularity)
+        recorddefs[block].append([FILLER, 'C', (tot, tot), 'AN'])

@@ -36,11 +36,13 @@ def main(inn, out):
         #'TOD', 
         #    'LOC'
         'DET',
-        #    'DES', # TODO ?
+        # TODO Create procedure for sub-sub-fields
+        #    'DES', # TODO
         #    'RFN',
         #    'TAX',
         #    'ALD',
-        #    'NAD', # TODO mandatory 
+        # TODO Create procedure for sub-sub-fields
+        #    'NAD', # TODO (mandatory)
         #    'NAE',
         #    'NAR',
         #    'NAM',
@@ -52,6 +54,7 @@ def main(inn, out):
         #'IVA',
         'TMA',        
         ) 
+
     for block in loop_block:
         fields = [field[0] for field in recorddefs[block]]
 
