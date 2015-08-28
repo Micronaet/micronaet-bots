@@ -44,10 +44,7 @@ def total_char(recorddef):
     '''
     res = 0
     for item in recorddef:
-        if item[2] == tuple:
-            res += item[2][0] # equal to [1]
-        else:
-            pass # raise error    
+        res += item[2] # never tuple, maybe manipulate because has extra fields
     return res
 
 def total_chat(recorddefs, block_particularity):
@@ -58,7 +55,9 @@ def total_chat(recorddefs, block_particularity):
     
     block_length = {} 
     for item in recorddefs:
-        block_length[item] = total_char(recorddefs[item])
+        # only length 3 (there's a 'BOTS_1$@#%_error' block!!)
+        if len(item) == 3:
+            block_length[item] = total_char(recorddefs[item])
     
     max_char = max(block_length.values()) + 1 # add 1 char (so filler min. 1)
     
@@ -144,10 +143,11 @@ structure = [
 # -----------------------------------------------------------------------------
 #      Add extra fields for filler line to have all same char number
 # -----------------------------------------------------------------------------
-import pdb; pdb.set_trace()
-for block in recorddefs:  # TODO check that is insert only once
-    # Load data
-    if FILLER not in recorddefs[block]:  # else nothing, yet created
-        tot = block_particularity[block]
-        total_chat(recorddefs, block_particularity)
-        recorddefs[block].append([FILLER, 'C', (tot, tot), 'AN'])
+#for block in recorddefs:  # TODO check that is insert only once
+#    # Load data
+#    if FILLER not in recorddefs[block]:  # else nothing, yet created
+#        # Load extra info for block (es. extra space):
+#        total_chat(recorddefs, block_particularity)
+#        
+#        tot = block_particularity[block][0]
+#        recorddefs[block].append([FILLER, 'C', (tot, tot), 'AN'])
