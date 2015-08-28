@@ -1,11 +1,8 @@
 # Mapping Script
 import bots.transform as transform
-# TODO rewrite ALL
-# VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-
 
 # Load record def elements (use csv for destination)
-from bots.usersys.grammars.fixed.csv_ORDERS import recorddefs 
+from bots.usersys.grammars.fixed.csv_INVOIC import recorddefs 
 
 def main(inn, out):
     """
@@ -24,11 +21,11 @@ def main(inn, out):
     #                                BGM
     # -------------------------------------------------------------------------
     # Import BGM fields:
-    block = 'BGM'
-    fields = [field[0] for field in recorddefs[block]]
+    parent = 'BGM'
+    fields = [field[0] for field in recorddefs[parent]]
     for field in fields:
-        out.put({'BOTSID': block, field: 
-            inn.get({'BOTSID': block, field: None})})
+        out.put({'BOTSID': parent, field: 
+            inn.get({'BOTSID': parent, field: None})})
 
     # -------------------------------------------------------------------------
     #                            1-N elements
@@ -62,8 +59,8 @@ def main(inn, out):
     for block in loop_block:
         fields = [field[0] for field in recorddefs[block]]
 
-        for item in inn.getloop({'BOTSID': 'BGM'}, {'BOTSID': block}):
-            item_out = out.putloop({'BOTSID':'BGM'}, {'BOTSID': block})
+        for item in inn.getloop({'BOTSID': parent}, {'BOTSID': block}):
+            item_out = out.putloop({'BOTSID': parent}, {'BOTSID': block})
             for field in fields:
                 item_out.put({'BOTSID': block, field:
                     item.get({'BOTSID': block, field: None})})
