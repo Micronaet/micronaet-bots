@@ -47,9 +47,9 @@ recorddefs = {
     #                    BGM Mandatory information (document)
     # -------------------------------------------------------------------------
     'BGM': [ # header record
-        ['BOTSID', 'M', (3, 3), 'AN'], # BGM (BOTSID)
+        ['BOTSID', 'M', (3, 3), 'AN'], # BGM
 
-        # ID-EDI-MITT: # TODO Create a structured field?
+        # ID-EDI-MITT:
         ['ID-EDI-MITT-1', 'M', (35, 35), 'AN'], # ID sender VAT o EAN/UCC
         ['ID-EDI-MITT-2', 'C', (4, 4), 'AN'],
         ['ID-EDI-MITT-3', 'C', (14, 14), 'AN'],
@@ -95,7 +95,7 @@ recorddefs = {
         ['CITTAF', 'M', (35, 35), 'AN'],
         ['PROVF', 'M', (9, 9), 'AN'],
         ['CAPF', 'M', (9, 9), 'AN'],
-        ['NAZIOF', 'C', (3, 3), 'AN'], # National code
+        ['NAZIOF', 'C', (3, 3), 'AN'], # Country code
 
         ['PIVANAZF', 'M', (35, 35), 'AN'],
         ['TRIBUNALE', 'C', (35, 35), 'AN'],
@@ -133,7 +133,7 @@ recorddefs = {
         ['CITTAI', 'M', (35, 35), 'AN'],
         ['PROVI', 'M', (9, 9), 'AN'],
         ['CAPI', 'M', (9, 9), 'AN'],
-        ['NAZIOI', 'C', (3, 3), 'AN'], # National code
+        ['NAZIOI', 'C', (3, 3), 'AN'], # Country code
 
         ['PIVANAZI', 'M', (35, 35), 'AN'],
         ['NUREGCOOP', 'M', (35, 35), 'AN'], # REA
@@ -158,7 +158,7 @@ recorddefs = {
         ['CITTAP', 'C', (35, 35), 'AN'],
         ['PROVP', 'C', (9, 9), 'AN'],
         ['CAPP', 'C', (9, 9), 'AN'],
-        ['NAZIOP', 'C', (3, 3), 'AN'], # National code
+        ['NAZIOP', 'C', (3, 3), 'AN'], # Country code
         ['PIVANAZP', 'C', (35, 35), 'AN'],
 
         ['FILLER', 'C', (51, 51), 'AN'], # not used
@@ -182,7 +182,7 @@ recorddefs = {
         ['CITTAA', 'C', (35, 35), 'AN'],
         ['PROVA', 'C', (9, 9), 'AN'],
         ['CAPA', 'C', (9, 9), 'AN'],
-        ['NAZIOA', 'C', (3, 3), 'AN'], # National code
+        ['NAZIOA', 'C', (3, 3), 'AN'], # Country code
         ['PIVANAZA', 'C', (35, 35), 'AN'],
 
         ['FILLER', 'C', (51, 51), 'AN'], # not used
@@ -206,7 +206,7 @@ recorddefs = {
         ['CITTAO', 'C', (35, 35), 'AN'],
         ['PROVO', 'C', (9, 9), 'AN'],
         ['CAPO', 'C', (9, 9), 'AN'],
-        ['NAZIOO', 'C', (3, 3), 'AN'], # National code
+        ['NAZIOO', 'C', (3, 3), 'AN'], # Country code
         ['PIVANAZO', 'C', (35, 35), 'AN'],
 
         ['FILLER', 'C', (51, 51), 'AN'], # not used
@@ -317,6 +317,7 @@ recorddefs = {
     # -------------------------------------------------------------------------
     'LOC': [
         ['BOTSID', 'M', (3, 3), 'AN'], # LOC
+        
         ['CODCONS', 'M', (17, 17), 'AN'], # EAN / UCC VAT
         ['QCODCONS', 'M', (3, 3), 'AN'],
         # 14 = EAN / UCC
@@ -444,6 +445,7 @@ recorddefs = {
     # -------------------------------------------------------------------------
     'DES': [
         ['BOTSID', 'M', (3, 3), 'AN'], # DES
+        
         ['DESCR', 'C', (175, 175), 'AN'],
         ],
 
@@ -585,7 +587,7 @@ recorddefs = {
         ['CITTAD', 'M', (35, 35), 'AN'],
         ['PROVD', 'M', (9, 9), 'AN'],
         ['CAPD', 'M', (9, 9), 'AN'],
-        ['NAZIOD', 'C', (3, 3), 'AN'], # National code
+        ['NAZIOD', 'C', (3, 3), 'AN'], # Country code
 
         ['NUMBOLLA', 'C', (35, 35), 'AN'],
         ['DATABOLL', 'C', (8, 8), 'AN'],
@@ -611,7 +613,7 @@ recorddefs = {
         ['CITTAE', 'M', (35, 35), 'AN'],
         ['PROVE', 'M', (9, 9), 'AN'],
         ['CAPE', 'M', (9, 9), 'AN'],
-        ['NAZIOE', 'C', (3, 3), 'AN'], # National code
+        ['NAZIOE', 'C', (3, 3), 'AN'], # Country code
         ['FILLER', 'C', (86, 86), 'AN'], # not used
         ],        
 
@@ -633,7 +635,7 @@ recorddefs = {
         ['CITTAC', 'M', (35, 35), 'AN'],
         ['PROVC', 'M', (9, 9), 'AN'],
         ['CAPC', 'M', (9, 9), 'AN'],
-        ['NAZIOC', 'C', (3, 3), 'AN'], # National code
+        ['NAZIOC', 'C', (3, 3), 'AN'], # Country code
         ['FILLER', 'C', (86, 86), 'AN'], # not used
         ],                
 
@@ -655,7 +657,7 @@ recorddefs = {
         ['CITTAM', 'M', (35, 35), 'AN'],
         ['PROVM', 'M', (9, 9), 'AN'],
         ['CAPM', 'M', (9, 9), 'AN'],
-        ['NAZIOM', 'C', (3, 3), 'AN'], # National code
+        ['NAZIOM', 'C', (3, 3), 'AN'], # Country code
         
         ['NUMBOLLA', 'C', (35, 35), 'AN'],
         ['DATABOLL', 'C', (8, 8), 'AN'],
@@ -681,7 +683,7 @@ recorddefs = {
         ['CITTAS', 'M', (35, 35), 'AN'],
         ['PROVS', 'M', (9, 9), 'AN'],
         ['CAPS', 'M', (9, 9), 'AN'],
-        ['NAZIOS', 'C', (3, 3), 'AN'], # National code
+        ['NAZIOS', 'C', (3, 3), 'AN'], # Country code
         
         ['NUMBOLLA', 'C', (35, 35), 'AN'],
         ['DATABOLL', 'C', (8, 8), 'AN'],
@@ -707,7 +709,7 @@ recorddefs = {
         ['CITTAX', 'M', (35, 35), 'AN'],
         ['PROVX', 'M', (9, 9), 'AN'],
         ['CAPX', 'M', (9, 9), 'AN'],
-        ['NAZIOX', 'C', (3, 3), 'AN'], # National code
+        ['NAZIOX', 'C', (3, 3), 'AN'], # Country code
         
         ['NUMBOLLA', 'C', (35, 35), 'AN'],
         ['DATABOLL', 'C', (8, 8), 'AN'],
@@ -745,6 +747,7 @@ recorddefs = {
     # -------------------------------------------------------------------------
     'ALT': [
         ['BOTSID', 'M', (3, 3), 'AN'], # ALT
+        
         ['INDSCADD', 'M', (3, 3), 'AN'],
         # A = Sconto
         # C = Addebito
@@ -784,6 +787,7 @@ recorddefs = {
     # -------------------------------------------------------------------------
     'IVA': [
         ['BOTSID', 'M', (3, 3), 'AN'], # IVA
+        
         ['TIPOTASS', 'C', (3, 3), 'AN'],
         
         ['DESCRIZ', 'M', (35, 35), 'AN'],

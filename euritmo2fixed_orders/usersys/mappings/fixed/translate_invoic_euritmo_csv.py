@@ -7,13 +7,9 @@ from bots.usersys.grammars.fixed.csv_INVOIC import recorddefs
 def main(inn, out):
     """
     inn: the object for the incoming message; 
-    via get() and getloop() the content of the message can be accessed.
-    
     inn.ta_info contains a python dict with information about in message
     
     out: the object for the outgoing message; 
-    via put() and putloop() content is written for this message.
-    
     out.ta_info contains a python dict with information about out message
     """
     
