@@ -36,7 +36,7 @@ def main(inn, out):
         #'TOD', 
         #    'LOC'
         'DET',
-        #    'DES',
+        #    'DES', # TODO ?
         #    'RFN',
         #    'TAX',
         #    'ALD',

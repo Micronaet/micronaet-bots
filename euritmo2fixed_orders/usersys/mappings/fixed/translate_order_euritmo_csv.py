@@ -39,7 +39,8 @@ def main(inn, out):
         #'NAI', 'NAC', 'NAM', 
         'DTM', 
         #'CNT', 
-        'LIN',)
+        'LIN',
+        )
     for block in loop_block:
         fields = [field[0] for field in recorddefs[block]]
 

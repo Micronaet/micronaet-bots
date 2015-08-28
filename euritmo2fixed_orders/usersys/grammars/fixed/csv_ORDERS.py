@@ -52,7 +52,7 @@ def total_chat(recorddefs, block_particularity):
     '''
     
     block_length = {} 
-    for item recorddefs:
+    for item in recorddefs:
         block_length[item] = total_char(recorddefs[item])
     
     max_char = max(block_length.values()) + 1 # add 1 char (so filler min. 1)
@@ -63,7 +63,7 @@ def total_chat(recorddefs, block_particularity):
 
 # Set extra information for every block elements, format:
 # k = block: value = (
-#    date, hour, real, fill extra space)
+#    fill extra space, date, hour, real)
 block_particularity = { 
     'BGM': [0, (), (), (), ],
     #'RFF': [0, (), (), (), ],
@@ -144,4 +144,4 @@ structure = [
 #    # Load data
 #    tot = block_particularity[block]
 #    total_chat(recorddefs, block_particularity)
-    recorddefs[block].append(['Account_filler', 'C', (tot, tot), 'AN'])
+#    recorddefs[block].append(['Account_filler', 'C', (tot, tot), 'AN'])
