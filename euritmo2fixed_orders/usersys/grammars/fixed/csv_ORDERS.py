@@ -146,7 +146,7 @@ structure = [
 import pdb; pdb.set_trace()
 for block in recorddefs:  # TODO check that is insert only once
     # Load data
-    if block not in recordefs: # Jump block not used
+    if block not in block_particularity: # Jump block not used
         continue
     if FILLER not in recorddefs[block]:  # else nothing, yet created
         # Load extra info for block (es. extra space):
