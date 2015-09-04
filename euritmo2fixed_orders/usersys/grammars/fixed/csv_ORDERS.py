@@ -144,11 +144,12 @@ structure = [
 #      Add extra fields for filler line to have all same char number
 # -----------------------------------------------------------------------------
 #import pdb; pdb.set_trace()
-#for block in recorddefs:  # TODO check that is insert only once
-#    # Load data
-#    if FILLER not in recorddefs[block]:  # else nothing, yet created
-#        # Load extra info for block (es. extra space):
-#        total_char_filler(recorddefs, block_particularity)
-#        
-#        tot = block_particularity[block][0]
-#        recorddefs[block].append([FILLER, 'C', (tot, tot), 'AN'])
+for block in recorddefs:  # TODO check that is insert only once
+    # Load data
+    if FILLER not in recorddefs[block]:  # else nothing, yet created
+        # Load extra info for block (es. extra space):
+        total_char_filler(recorddefs, block_particularity)
+        
+        tot = block_particularity[block][0]
+        recorddefs[block].append([FILLER, 0, tot, 'AN', True, 0, tot, 'A', 1])
+        #recorddefs[block].append([FILLER, 'C', (tot, tot), 'AN'])        
