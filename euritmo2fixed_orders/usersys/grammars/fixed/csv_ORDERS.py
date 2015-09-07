@@ -169,12 +169,16 @@ log = True  # TODO change!!
 for block in recorddefs:  # TODO check that is insert only once
     if block not in block_particularity: 
         continue # Jump block not used
-    if FILLER_FIELD not in recorddefs[block]:  # else yet created
-        # Load extra info for block (es. extra space):
-        total_char_filler(recorddefs, block_particularity, log)
+    if FILLER_FIELD in recorddefs[block]:  # else yet created
+        if log:
+            print "Jump filler calculation!"
+        break # yet run 
         
-        tot = block_particularity[block][0]
-        recorddefs[block].append(
-            [FILLER_FIELD, 0, tot, 'AN', True, 0, tot, 'A', 1])
-        #recorddefs[block].append([FILLER_FIELD, 'C', (tot, tot), 'AN'])        
+    # Load extra info for block (es. extra space):
+    total_char_filler(recorddefs, block_particularity, log)
+    
+    tot = block_particularity[block][0]
+    recorddefs[block].append(
+        [FILLER_FIELD, 0, tot, 'AN', True, 0, tot, 'A', 1])
+    #recorddefs[block].append([FILLER_FIELD, 'C', (tot, tot), 'AN'])        
 print "End filler creation!"        
