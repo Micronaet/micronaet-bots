@@ -80,7 +80,7 @@ def total_char_filler(recorddefs, block_particularity, log=False):
     for item in block_particularity:
         block_particularity[item][0] = max_char - block_length[item]
         if log: 
-            print "[INFO] Block: %s [%s (max) - %s (len.) = %s (filler)]" % (
+            print "INFO\tBlock: %s [%s (max) - %s (len.) = %s (filler)]" % (
                 item, max_char, block_length[item], 
                 block_particularity[item][0])
     return
@@ -166,16 +166,16 @@ structure = [
 # -----------------------------------------------------------------------------
 print "Start test filler field:"
 log = True  # TODO change!!
+
+# Get extra info for filler:
+total_char_filler(recorddefs, block_particularity, log)
+
 for block in recorddefs:  # TODO check that is insert only once
     if block not in block_particularity: 
         continue # Jump block not used
-    if FILLER_FIELD in recorddefs[block]:  # else yet created
-        if log:
-            print "Jump filler calculation!"
-        break # yet run 
         
-    # Load extra info for block (es. extra space):
-    total_char_filler(recorddefs, block_particularity, log)
+    if FILLER_FIELD in recorddefs[block]:  # else yet created
+        break # yet run        
     
     tot = block_particularity[block][0]
     recorddefs[block].append(
