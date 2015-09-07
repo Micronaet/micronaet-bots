@@ -99,15 +99,15 @@ block_particularity = {
 
     'NAB': [0, (), (), (), ],
     'NAD': [0, (), (), (), ],
-    'NAI': [0, (), (), (), ],
-    'NAC': [0, (), (), (), ],
-    'NAM': [0, (), (), (), ],
+    ##'NAI': [0, (), (), (), ],
+    ##'NAC': [0, (), (), (), ],
+    ##'NAM': [0, (), (), (), ],
 
     'DTM': [0, (), (), (), ],
     #'FTX': [0, (), (), (), ],
     #'PAT': [0, (), (), (), ],
     #'TOD': [0, (), (), (), ],
-    'CNT': [0, (), (), (), ],
+    ##'CNT': [0, (), (), (), ],
 
     'LIN': [0, (), (), (), ],
     #'MEA': [0, (), (), (), ],
@@ -133,7 +133,7 @@ structure = [
         #{ID: 'RFC', MIN: 0, MAX: 10}, # (contract)
 
         # NAx max 5 record TODO how realize?
-        {ID: 'NAS', MIN: 0, MAX: 1}, # Supplier info (was mandatory)
+        ### {ID: 'NAS', MIN: 0, MAX: 1}, # Supplier info (was mandatory)
         #{ID: 'NAS', MIN: 1, MAX: 1, LEVEL: [ # keep in one line
         #    {ID: 'CTA', MIN: 0, MAX: 5}, # Contact supplier
         #    ]},
@@ -148,7 +148,7 @@ structure = [
         #{ID: 'PAT', MIN: 0, MAX: 10}, # Payment terms
         #{ID: 'TOD', MIN: 0, MAX: 5}, # Delivery condition
         #{ID: 'CNT', MIN: 0, MAX: 1}, # Summary (was last element)
-        {ID: 'LIN', MIN: 1, MAX: 999},# LEVEL: [
+        {ID: 'LIN', MIN: 1, MAX: 999}, # LEVEL: [
         #    {ID: 'MEA', MIN: 0, MAX: 99}, # measure
         #    {ID: 'PAC', MIN: 0, MAX: 9999}, # package
         #    {ID: 'DTR', MIN: 0, MAX: 99}, # delivery date for line

@@ -46,7 +46,7 @@ def main(inn, out):
             item_out = out.putloop({'BOTSID':'BGM'}, {'BOTSID': block})
             for field in fields:
                 item_out.put({'BOTSID': block, field:
-                    item.get({'BOTSID': block, field: None})})
+                    item.get({'BOTSID': block, field: None})}) # TODO or ''
             else:
                 # Always add filler fields with spage in every element
                 item_out.put({'BOTSID': block, FILLER_FIELD: " "})
