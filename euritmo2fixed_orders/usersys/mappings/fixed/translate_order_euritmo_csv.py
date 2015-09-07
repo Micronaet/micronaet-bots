@@ -2,7 +2,7 @@
 import bots.transform as transform
 
 # Load record def elements (use csv for destination)
-from bots.usersys.grammars.fixed.csv_ORDERS import recorddefs 
+from bots.usersys.grammars.fixed.csv_ORDERS import recorddefs, FILLER_FIELD
 
 def main(inn, out):
     """
@@ -48,6 +48,9 @@ def main(inn, out):
             for field in fields:
                 item_out.put({'BOTSID': block, field:
                     item.get({'BOTSID': block, field: None})})
+            else:
+                # Always add filler fields with spage in every element
+                item_out.put({'BOTSID': block, FILLER_FIELD: " "})
 
     #transform.inn2out(inn, out)
     '''
