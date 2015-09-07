@@ -10,8 +10,11 @@ FILLER = 'filler_field'
 # -----------------------------------------------------------------------------
 #                               Utility function
 # -----------------------------------------------------------------------------
+
 # TODO: Utility function:
+# ----------------
 # Format function:
+# ----------------
 def format_date(value, separator='-', format_type='ISO'):
     ''' Format input date in accounting value    
         value = text value of date (8 or 6 char ISO input)
@@ -36,38 +39,51 @@ def format_real(value, tuple_format, decimal=',', thousand=''):
     ''' Format text value as IIIIIIDDD value in correct text with separators
     '''
     return value
+# -----------------------------------------------------------------------------
 
+# ---------------------------
 # Reach information function:
-def char_block(block):
+# ---------------------------
+def char_block(block, log=False):
     ''' Return total number of char of the record element passed
         (for fixed elements so all tuples like (3, 3) >> 3 )
+        log = write in log if True (TODO put False)
+        NOTE: seems that tuple element became integer (record will be parsed!)
     '''
     res = 0
     for item in block:
-        res += item[2] # never tuple, maybe manipulate because has extra fields
+        res += item[2] # never tuple (pre-parsed, is not the original)
+        if log:
+            print "[INFO] Block: %s - Total char: %s" % (block, res)
     return res
 
-def total_char_filler(recorddefs, block_particularity):
+def total_char_filler(recorddefs, block_particularity, log=False):
     ''' Set filler value in dict for manage filler
         Check all lenght in recorddefs
         Set in block_particularity extra space for filler (first of the list)
     '''
     
     block_length = {} 
+    # TODO remove from here (every time check max elements!!)
     for item in block_particularity: # NOTE: use partic key but search in rec.
         # only length 3 (there's a 'BOTS_1$@#%_error' block!!)
         if len(item) == 3:
-            block_length[item] = char_block(recorddefs[item])
+            block_length[item] = char_block(recorddefs[item], log)
     
     max_char = max(block_length.values()) + 1 # add 1 char (so filler min. 1)
     
     for item in block_particularity:
-        block_particularity[item][0] = max_char - block_length[item]        
+        block_particularity[item][0] = max_char - block_length[item]
+        if log: 
+            print "[INFO] Block: %s [%s (max) - %s (len.) = %s (filler)]" % (
+                item, max_char, block_length[item], 
+                block_particularity[item][0])
     return
 
 # Set extra information for every block elements, format:
 # k = block: value = (
 #    fill extra space, date, hour, real)
+# TODO fill when decide format of number, date etc.
 block_particularity = { 
     'BGM': [0, (), (), (), ],
     #'RFF': [0, (), (), (), ],
@@ -143,14 +159,13 @@ structure = [
 # -----------------------------------------------------------------------------
 #      Add extra fields for filler line to have all same char number
 # -----------------------------------------------------------------------------
-import pdb; pdb.set_trace()
+log = True  # TODO change!!
 for block in recorddefs:  # TODO check that is insert only once
-    # Load data
-    if block not in block_particularity: # Jump block not used
-        continue
-    if FILLER not in recorddefs[block]:  # else nothing, yet created
+    if block not in block_particularity: 
+        continue # Jump block not used
+    if FILLER not in recorddefs[block]:  # else yet created
         # Load extra info for block (es. extra space):
-        total_char_filler(recorddefs, block_particularity)
+        total_char_filler(recorddefs, block_particularity, log)
         
         tot = block_particularity[block][0]
         recorddefs[block].append([FILLER, 0, tot, 'AN', True, 0, tot, 'A', 1])
