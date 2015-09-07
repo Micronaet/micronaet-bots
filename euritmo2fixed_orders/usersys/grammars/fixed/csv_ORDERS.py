@@ -44,18 +44,26 @@ def format_real(value, tuple_format, decimal=',', thousand=''):
 # ---------------------------
 # Reach information function:
 # ---------------------------
-def char_block(block, log=False):
-    ''' Return total number of char of the record element passed
-        (for fixed elements so all tuples like (3, 3) >> 3 )
-        log = write in log if True (TODO put False)
-        NOTE: seems that tuple element became integer (record will be parsed!)
+def prepare_structured_block_length(block_list, recorddefs, block_length):
+    ''' Calculate number of char for all needed 
+        Note: element was (3, 3) but seems 3 only after pre-parse
+    
+        block_list: list of block that need to be write
+        recorddefs: structured field (for get fields list for totals)        
+        @result in: structured block_length        
     '''
-    res = 0
-    for item in block:
-        res += item[2] # never tuple (pre-parsed, is not the original)
-        if log:
-            print "[INFO] Block: %s - Total char: %s" % (block, res)
-    return res
+    for block in block_list: # all block to write
+        res = 0
+        if len(block) != 3: # there's a 'BOTS_1$@#%_error' block!!
+            continue
+
+        for item in recorddefs[block]: # loop on all fields 
+            if item[0] == FILLER_FIELD:
+                continue
+            res += item[2] # never tuple! (pre-parsed, is not the original)
+    
+        block_length[block] = res
+    return
 
 def total_char_filler(recorddefs, block_particularity, log=False):
     ''' Set filler value in dict for manage filler
@@ -63,12 +71,9 @@ def total_char_filler(recorddefs, block_particularity, log=False):
         Set in block_particularity extra space for filler (first of the list)
     '''
     
-    block_length = {} 
-    # TODO remove from here (every time check max elements!!)
-    for item in block_particularity: # NOTE: use partic key but search in rec.
-        # only length 3 (there's a 'BOTS_1$@#%_error' block!!)
-        if len(item) == 3:
-            block_length[item] = char_block(recorddefs[item], log)
+    block_length = {} # structure for load length and 
+    prepare_structured_block_length(
+        block_particularity.keys(), recorddefs, block_length)
     
     max_char = max(block_length.values()) + 1 # add 1 char (so filler min. 1)
     
