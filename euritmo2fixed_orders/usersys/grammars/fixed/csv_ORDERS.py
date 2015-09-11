@@ -93,7 +93,7 @@ def total_char_filler(recorddefs, block_particularity, log=False):
     
     for item in block_particularity:
         block_particularity[item][0] = max_char - block_length[item]
-        if log: 
+        if log:
             print "INFO\tBlock: %s [%s (max) - %s (len.) = %s (filler)]" % (
                 item, max_char, block_length[item], 
                 block_particularity[item][0])
