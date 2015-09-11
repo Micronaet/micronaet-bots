@@ -453,8 +453,12 @@ recorddefs = {
         # Note: Mandatory if present PRZUNI
 
         # TODO Currenty not present in file received (enable after information)
-        ##['NRCUINTU', 'M', (15, 15), 'AN'], # 12 + 3, 12.3 # TODO N
-        ##['CODAZIOL', 'C', (3, 3), 'AN'],
+        ['NRCUINTU', 'M', (15, 15), 'AN'], # 12 + 3, 12.3# TODO N
+        ['CODAZIOL', 'C', (3, 3), 'AN'],
+        
+        # TODO NOTE: not present in euritmo:
+        ['L01', 'C', (3, 3), 'AN'], # TODO extra!!
+        
         # Mandatory NOT present in order
         # Mandatory present in order
 
