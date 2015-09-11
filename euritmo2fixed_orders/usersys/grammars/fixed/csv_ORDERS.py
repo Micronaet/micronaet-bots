@@ -15,6 +15,20 @@ FILLER_FIELD = 'filler_field'
 # ----------------
 # Format function:
 # ----------------
+def format_string(value, substitute='#'):
+    ''' Check ascii value and substitute with substiture, default #
+        
+        @return text
+    '''    
+    res = ''    
+    for c in value:
+        try:
+            test = ord(c)
+            res += c
+        except:
+            res += substitute
+    return value
+
 def format_date(value, separator='-', format_type='ISO'):
     ''' Format input date in accounting value    
         value = text value of date (8 or 6 char ISO input)
@@ -87,36 +101,36 @@ def total_char_filler(recorddefs, block_particularity, log=False):
 
 # Set extra information for every block elements, format:
 # k = block: value = (
-#    fill extra space, date, hour, real)
+#    fill extra space, string, date, hour, real)
 # TODO fill when decide format of number, date etc.
 block_particularity = { 
-    'BGM': [0, (), (), (), ],
-    #'RFF': [0, (), (), (), ],
-    #'RFC': [0, (), (), (), ],
+    'BGM': [0, (), (), (), (), ],
+    #'RFF': [0, (), (), (), (), ],
+    #'RFC': [0, (), (), (), (), ],
 
-    #'NAS': [0, (), (), (), ],
-    #'CTA': [0, (), (), (), ],
+    #'NAS': [0, (), (), (), (), ],
+    #'CTA': [0, (), (), (), (), ],
 
-    'NAB': [0, (), (), (), ],
-    'NAD': [0, (), (), (), ],
-    ##'NAI': [0, (), (), (), ],
-    ##'NAC': [0, (), (), (), ],
-    ##'NAM': [0, (), (), (), ],
+    'NAB': [0, (), (), (), (), ],
+    'NAD': [0, (), (), (), (), ],
+    ##'NAI': [0, (), (), (), (), ],
+    ##'NAC': [0, (), (), (), (), ],
+    ##'NAM': [0, (), (), (), (), ],
 
-    'DTM': [0, (), (), (), ],
-    #'FTX': [0, (), (), (), ],
-    #'PAT': [0, (), (), (), ],
-    #'TOD': [0, (), (), (), ],
-    ##'CNT': [0, (), (), (), ],
+    'DTM': [0, (), (), (), (), ],
+    #'FTX': [0, (), (), (), (), ],
+    #'PAT': [0, (), (), (), (), ],
+    #'TOD': [0, (), (), (), (), ],
+    ##'CNT': [0, (), (), (), (), ],
 
-    'LIN': [0, (), (), (), ],
-    #'MEA': [0, (), (), (), ],
-    #'PAC': [0, (), (), (), ],
-    #'DTR': [0, (), (), (), ],
-    #'ALD': [0, (), (), (), ],
-    #'FTL': [0, (), (), (), ],
-    #'LOC': [0, (), (), (), ],
-    #'DTL': [0, (), (), (), ],
+    'LIN': [0, (), (), (), (), ],
+    #'MEA': [0, (), (), (), (), ],
+    #'PAC': [0, (), (), (), (), ],
+    #'DTR': [0, (), (), (), (), ],
+    #'ALD': [0, (), (), (), (), ],
+    #'FTL': [0, (), (), (), (), ],
+    #'LOC': [0, (), (), (), (), ],
+    #'DTL': [0, (), (), (), (), ],
     }
     
 # -----------------------------------------------------------------------------
