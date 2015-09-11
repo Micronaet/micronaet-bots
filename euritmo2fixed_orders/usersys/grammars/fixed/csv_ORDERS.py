@@ -15,19 +15,21 @@ FILLER_FIELD = 'filler_field'
 # ----------------
 # Format function:
 # ----------------
-def format_string(value, substitute='#'):
+def format_string(value = '', substitute='#'):
     ''' Check ascii value and substitute with substiture, default #
         
         @return text
-    '''    
-    res = ''    
+    '''
+    res = ''
     for c in value:
         try:
-            test = ord(c)
-            res += c
+            if ord(c) < 127:
+                res += c
+            else:
+                res += substitute                
         except:
             res += substitute
-    return value
+    return res
 
 def format_date(value, separator='-', format_type='ISO'):
     ''' Format input date in accounting value    
@@ -132,7 +134,7 @@ block_particularity = {
     #'LOC': [0, (), (), (), (), ],
     #'DTL': [0, (), (), (), (), ],
     }
-    
+
 # -----------------------------------------------------------------------------
 #                   Syntax: Parameters for translation. 
 # -----------------------------------------------------------------------------

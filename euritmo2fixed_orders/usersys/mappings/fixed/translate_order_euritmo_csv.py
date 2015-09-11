@@ -23,7 +23,6 @@ def main(inn, out):
     # -------------------------------------------------------------------------
     #                                BGM
     # -------------------------------------------------------------------------
-    import pdb; pdb.set_trace()
     # Import BGM fields:
     block = 'BGM'
     fields = [field[0] for field in recorddefs[block]]
@@ -44,6 +43,7 @@ def main(inn, out):
         #'CNT', 
         'LIN',
         )
+
     for block in loop_block:
         fields = [field[0] for field in recorddefs[block]]
 
@@ -55,4 +55,4 @@ def main(inn, out):
                 item_out.put({'BOTSID': block, field: value})
             else:
                 # Always add filler fields with spage in every element
-                item_out.put({'BOTSID': block, FILLER_FIELD: " "})
+                item_out.put({'BOTSID': block, FILLER_FIELD: ' '})
