@@ -46,7 +46,7 @@ plugins = [
         'certfile': None,
         'charset': u'utf-8',
         'desc': None,
-        'filename': u'order_{botskey}_*.csv',
+        'filename': u'order_{botskey}_*.eur',
         'ftpaccount': u'',
         'ftpactive': False,
         'ftpbinary': False,
