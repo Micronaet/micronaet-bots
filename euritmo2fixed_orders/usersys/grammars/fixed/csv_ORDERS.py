@@ -15,12 +15,13 @@ FILLER_FIELD = 'filler_field'
 # ----------------
 # Format function:
 # ----------------
-def format_string(value = '', substitute='#'):
+def format_string(value, substitute='#'):
     ''' Check ascii value and substitute with substiture, default #
         
         @return text
     '''
     res = ''
+    value = value or ''
     for c in value:
         try:
             if ord(c) < 127:
