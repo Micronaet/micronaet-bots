@@ -25,8 +25,8 @@ def main(inn, out):
     # -------------------------------------------------------------------------    
     out.ta_info['botskey'] = "%s_%s_%s" % (
         inn.get({'BOTSID': 'BGM', 'DATADOC': None}),
-        inn.get({'BOTSID': 'BGM', 'NUMDOC': None}),
         inn.get({'BOTSID': 'BGM'}, {'BOTSID': 'DTM', 'DATACONS': None}),
+        inn.get({'BOTSID': 'BGM', 'NUMDOC': None}),
         )
 
     # -------------------------------------------------------------------------
