@@ -37,7 +37,7 @@ plugins = [
         'testpath': u'',
         'type': u'file',
         'username': u'',
-    },
+        },
     {
         'plugintype': u'channel',
         'apop': False,
@@ -46,7 +46,7 @@ plugins = [
         'certfile': None,
         'charset': u'utf-8',
         'desc': None,
-        'filename': u'order_*.csv',
+        'filename': u'order_{botskey}_*.csv',
         'ftpaccount': u'',
         'ftpactive': False,
         'ftpbinary': False,
@@ -70,7 +70,7 @@ plugins = [
         'testpath': u'',
         'type': u'file',
         'username': u'',
-    },
+        },
     {
         'plugintype': u'translate',
         'active': True,
@@ -85,7 +85,7 @@ plugins = [
         'tomessagetype': u'csv_ORDERS',
         'topartner': None,
         'tscript': u'translate_order_euritmo_csv',
-    },
+        },
     {
         'plugintype': u'routes',
         'active': True,
@@ -111,7 +111,7 @@ plugins = [
         'translateind': 1,
         'zip_incoming': None,
         'zip_outgoing': None,
-    },
+        },
 
     # -------------------------------------------------------------------------
     #                               INVOICE
@@ -148,7 +148,7 @@ plugins = [
         'testpath': u'',
         'type': u'file',
         'username': u'',
-    },
+        },
     {
         'plugintype': u'channel',
         'apop': False,
@@ -181,7 +181,7 @@ plugins = [
         'testpath': u'',
         'type': u'file',
         'username': u'',
-    },
+        },
     {
         'plugintype': u'translate',
         'active': True,
@@ -196,7 +196,7 @@ plugins = [
         'tomessagetype': u'csv_INVOIC',
         'topartner': None,
         'tscript': u'translate_invoic_euritmo_csv',
-    },
+        },
     {
         'plugintype': u'routes',
         'active': True,
@@ -222,5 +222,5 @@ plugins = [
         'translateind': 1,
         'zip_incoming': None,
         'zip_outgoing': None,
-    },
+        },
     ]

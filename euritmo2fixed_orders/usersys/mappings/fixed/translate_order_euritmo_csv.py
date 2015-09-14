@@ -21,6 +21,11 @@ def main(inn, out):
     out.ta_info contains a python dict with information about out message
     """
     # -------------------------------------------------------------------------
+    #                         Export data for external
+    # -------------------------------------------------------------------------
+    out.ta_info['botskey'] = inn.get({'BOTSID': 'DTM', 'DATACONS': None})
+    
+    # -------------------------------------------------------------------------
     #                                BGM
     # -------------------------------------------------------------------------
     # Import BGM fields:
