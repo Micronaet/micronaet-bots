@@ -46,6 +46,7 @@ plugins = [
         'certfile': None,
         'charset': u'utf-8',
         'desc': None,
+        # TODO Use also name or company in filename!
         'filename': u'order_{botskey}_*.eur',
         'ftpaccount': u'',
         'ftpactive': False,
