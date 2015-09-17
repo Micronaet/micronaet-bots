@@ -35,7 +35,7 @@ path_history = os.path.expanduser(config.get('EDI', 'path_history'))
 path_out = os.path.expanduser(config.get('EDI', 'path_out'))
 path_bot = os.path.expanduser(config.get('EDI', 'path_bot'))
 
-wait = 60 # sec.
+wait = 120 # sec.
 # Path for log:
 #schedule_log = os.path.expanduser(config.get('LOG', 'schedule_log'))
 #import_log = os.path.expanduser(config.get('LOG', 'import_log'))
