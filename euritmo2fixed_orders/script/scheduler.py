@@ -76,11 +76,11 @@ for filename in file_list:
     f_in.close()    
     f_out.close()
 
-    print "[INFO] End clean" % file_in
+    print "[INFO] End clean: %s" % file_in
     
     # Move file in history folder:    
     os.rename(file_in, file_history) 
-    print "[INFO] History " % file_history
+    print "[INFO] History: %s " % file_history
 
 # Force load in bots:
 print "[INFO] Run schedule operation" 
