@@ -35,8 +35,8 @@ path_out = os.path.expanduser(config.get('EDI', 'path_out'))
 path_bot = os.path.expanduser(config.get('EDI', 'path_bot'))
 
 # Path for log:
-schedule_log = os.path.expanduser(config.get('LOG', 'schedule_log'))
-import_log = os.path.expanduser(config.get('LOG', 'import_log'))
+#schedule_log = os.path.expanduser(config.get('LOG', 'schedule_log'))
+#import_log = os.path.expanduser(config.get('LOG', 'import_log'))
 
 run_command = 'python %s --new' % join(
     path_bot, 'bots-engine.py')
@@ -57,12 +57,15 @@ def clean(line, replace='?'):
     return res 
     
 # Code:
+print "[INFO] Start conversion" 
 file_list = [f for f in listdir(path_in) if isfile(join(path_in, f))]
-for filename in file_list:
+print "[INFO] File found:\n %s" % (file_list, )
+for filename in file_list:  
     file_in = join(path_in, filename)
     file_out = join(path_out, filename)
     file_history = join(path_history, filename)
     
+    print "[INFO] Start clean file: %s" % file_in
     f_in = open(file_in, 'rb')
     f_out = open(file_out, 'w')
     
@@ -72,11 +75,16 @@ for filename in file_list:
     
     f_in.close()    
     f_out.close()
+
+    print "[INFO] End clean" % file_in
     
     # Move file in history folder:    
     os.rename(file_in, file_history) 
+    print "[INFO] History " % file_history
 
 # Force load in bots:
+print "[INFO] Run schedule operation" 
 os.system(run_command)
+print "[INFO] End conversion" 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
