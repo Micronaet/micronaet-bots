@@ -26,8 +26,12 @@ from os.path import isfile, join
 path_in = '/home/thebrush/Scrivania/EDI/in'
 path_history = '/home/thebrush/Scrivania/EDI/in/storico'
 path_out = '/home/thebrush/Scrivania/EDI/out'
+path_bot = '~/bots'
 
-run_command = 'python %s --new' % os.join('~/bots', 'bots-engine.py')
+run_command = 'python %s --new' % join(
+    os.path.expanduser(path_bot), 
+    'bots-engine.py',
+    )
     
 # Function:
 def clean(line, replace='?'):
@@ -57,6 +61,9 @@ for filename in file_list:
     # Clean all lines in input file:
     for line in f_in:
         f_out.write(clean(line))
+    
+    f_in.close()    
+    f_out.close()
     
     # Move file in history folder:    
     os.rename(file_in, file_history) 
