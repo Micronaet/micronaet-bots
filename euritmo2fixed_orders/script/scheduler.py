@@ -34,6 +34,7 @@ path_history = os.path.expanduser(config.get('EDI', 'path_history'))
 path_out = os.path.expanduser(config.get('EDI', 'path_out'))
 path_bot = os.path.expanduser(config.get('EDI', 'path_bot'))
 
+wait = 60 # sec.
 # Path for log:
 #schedule_log = os.path.expanduser(config.get('LOG', 'schedule_log'))
 #import_log = os.path.expanduser(config.get('LOG', 'import_log'))
@@ -65,7 +66,7 @@ for filename in file_list:
     file_out = join(path_out, filename)
     file_history = join(path_history, filename)
     
-    print "[INFO] Start clean file: %s" % file_in
+    print "[INFO] 1. Start clean file: %s" % file_in
     f_in = open(file_in, 'rb')
     f_out = open(file_out, 'w')
     
@@ -76,13 +77,15 @@ for filename in file_list:
     f_in.close()    
     f_out.close()
 
-    print "[INFO] End clean: %s" % file_in
+    print "[INFO] 2. End clean: %s" % file_in
     
     # Move file in history folder:    
     os.rename(file_in, file_history) 
-    print "[INFO] History: %s " % file_history
+    print "[INFO] 3. History: %s " % file_history
 
 # Force load in bots:
+print "[INFO] Wait %s sec." % wait
+time.wait(wait)
 print "[INFO] Run schedule operation" 
 os.system(run_command)
 print "[INFO] End conversion" 
