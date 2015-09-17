@@ -19,14 +19,22 @@
 ###############################################################################
 
 import os
+import ConfigParser
 from os import listdir
 from os.path import isfile, join
 
 # Parameters:
-path_in = '/home/thebrush/Scrivania/EDI/in'
-path_history = '/home/thebrush/Scrivania/EDI/in/storico'
-path_out = '/home/thebrush/Scrivania/EDI/out'
-path_bot = '~/bots'
+cfg_file = "openerp.cfg" # same directory
+config = ConfigParser.ConfigParser()
+config.read(cfg_file)
+
+# SMTP paramenter for log mail:
+smtp_server = config.get('EDI', 'path_in')
+
+path_in = config.get('EDI', 'path_in')
+path_history = config.get('EDI', 'path_history')
+path_out = config.get('EDI', 'path_out')
+path_bot = config.get('EDI', 'path_bot')
 
 run_command = 'python %s --new' % join(
     os.path.expanduser(path_bot), 
