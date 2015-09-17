@@ -28,11 +28,15 @@ cfg_file = "openerp.cfg" # same directory
 config = ConfigParser.ConfigParser()
 config.read(cfg_file)
 
-# SMTP paramenter for log mail:
+# Path for orders:
 path_in = os.path.expanduser(config.get('EDI', 'path_in'))
 path_history = os.path.expanduser(config.get('EDI', 'path_history'))
 path_out = os.path.expanduser(config.get('EDI', 'path_out'))
 path_bot = os.path.expanduser(config.get('EDI', 'path_bot'))
+
+# Path for log:
+schedule_log = os.path.expanduser(config.get('LOG', 'schedule_log'))
+import_log = os.path.expanduser(config.get('LOG', 'import_log'))
 
 run_command = 'python %s --new' % join(
     path_bot, 'bots-engine.py')
