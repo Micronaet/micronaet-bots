@@ -61,7 +61,7 @@ def clean(line, replace='?'):
 # Code:
 print "[INFO] Start conversion" 
 file_list = [f for f in listdir(path_in) if isfile(join(path_in, f))]
-print "[INFO] File found:\n %s" % (file_list, )
+print "[INFO] %s File found:\n %s" % (len(file_list), file_list)
 for filename in file_list:  
     file_in = join(path_in, filename)
     file_out = join(path_out, filename)
