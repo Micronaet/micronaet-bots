@@ -29,17 +29,13 @@ config = ConfigParser.ConfigParser()
 config.read(cfg_file)
 
 # SMTP paramenter for log mail:
-smtp_server = config.get('EDI', 'path_in')
-
-path_in = config.get('EDI', 'path_in')
-path_history = config.get('EDI', 'path_history')
-path_out = config.get('EDI', 'path_out')
-path_bot = config.get('EDI', 'path_bot')
+path_in = os.path.expanduser(config.get('EDI', 'path_in'))
+path_history = os.path.expanduser(config.get('EDI', 'path_history'))
+path_out = os.path.expanduser(config.get('EDI', 'path_out'))
+path_bot = os.path.expanduser(config.get('EDI', 'path_bot'))
 
 run_command = 'python %s --new' % join(
-    os.path.expanduser(path_bot), 
-    'bots-engine.py',
-    )
+    path_bot, 'bots-engine.py')
     
 # Function:
 def clean(line, replace='?'):
