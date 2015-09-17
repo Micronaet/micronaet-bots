@@ -86,7 +86,7 @@ for filename in file_list:
 
 # Force load in bots:
 print "[INFO] Wait %s sec." % wait
-time.wait(wait)
+time.sleep(wait)
 print "[INFO] Run schedule operation" 
 os.system(run_command)
 print "[INFO] End conversion" 
