@@ -1,0 +1,6 @@
+[INFO] Start conversion
+[INFO] 0 File found:
+ []
+[INFO] >> Wait 120 sec.
+[INFO] >> Run schedule operation
+[INFO] End conversion

@@ -36,7 +36,7 @@ path_out = os.path.expanduser(config.get('EDI', 'path_out'))
 path_bot = os.path.expanduser(config.get('EDI', 'path_bot'))
 log_file = 'log.txt'
 
-wait = 120 # sec.
+wait = 60 # sec.
 # Path for log:
 #schedule_log = os.path.expanduser(config.get('LOG', 'schedule_log'))
 #import_log = os.path.expanduser(config.get('LOG', 'import_log'))
@@ -44,7 +44,7 @@ wait = 120 # sec.
 run_command = 'python %s --new' % join(
     path_bot, 'bots-engine.py')
 
-log_f = open(log_file, 'w')
+log_f = open(log_file, 'a')
     
 # Function:
 def clean(line, replace='?'):
@@ -69,12 +69,12 @@ def log(f, message, type_message='info', echo=True):
         echo: if print message on screen
     '''
     if type_message not in ('info', 'warning', 'error'):
-        type_message == 'info':
+        type_message = 'info'
         
     message = '[%s] %s' % (
         type_message.upper(), 
         message,
-        ))
+        )
     f.write('%s\n' % message)
     if echo:
         print message
@@ -85,10 +85,7 @@ log(log_f, 'Start conversion')
 file_list = [f for f in listdir(path_in) if isfile(join(path_in, f))]
 
 log(log_f, 
-    '%s File found:\n %s' % (
-        len(file_list), file_list), 
-    'error',
-    )
+    '%s File found:\n %s' % (len(file_list), file_list), )
 
 for filename in file_list:  
     file_in = join(path_in, filename)
@@ -110,14 +107,14 @@ for filename in file_list:
     
     # Move file in history folder:    
     os.rename(file_in, file_history)
-    log(log_f, 'History: %s ' % file_history)
+    log(log_f, '3. History: %s' % file_history)
     
 
 # Force load in bots:
-log(log_f, 'Wait %s sec.' % wait)
+log(log_f, '>> Wait %s sec.' % wait)
 time.sleep(wait)
 
-log(log_f, 'Run schedule operation')
+log(log_f, '>> Run schedule operation')
 os.system(run_command) # TODO how read return?
 
 log(log_f, 'End conversion')
