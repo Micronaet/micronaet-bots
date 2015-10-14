@@ -34,6 +34,7 @@ path_in = os.path.expanduser(config.get('EDI', 'path_in'))
 path_history = os.path.expanduser(config.get('EDI', 'path_history'))
 path_out = os.path.expanduser(config.get('EDI', 'path_out'))
 path_bot = os.path.expanduser(config.get('EDI', 'path_bot'))
+log_file = 'log.txt'
 
 wait = 120 # sec.
 # Path for log:
@@ -42,6 +43,8 @@ wait = 120 # sec.
 
 run_command = 'python %s --new' % join(
     path_bot, 'bots-engine.py')
+
+log_f = open(log_file, 'w')
     
 # Function:
 def clean(line, replace='?'):
@@ -57,17 +60,42 @@ def clean(line, replace='?'):
         except:
             res += replace
     return res 
-    
+
+def log(f, message, type_message='info', echo=True):
+    ''' Log file on file and echo on screen
+        f: handle file
+        message: Message text
+        type_message: info, warning, error 
+        echo: if print message on screen
+    '''
+    if type_message not in ('info', 'warning', 'error'):
+        type_message == 'info':
+        
+    message = '[%s] %s' % (
+        type_message.upper(), 
+        message,
+        ))
+    f.write('%s\n' % message)
+    if echo:
+        print message
+    return True
+
 # Code:
-print "[INFO] Start conversion" 
+log(log_f, 'Start conversion')
 file_list = [f for f in listdir(path_in) if isfile(join(path_in, f))]
-print "[INFO] %s File found:\n %s" % (len(file_list), file_list)
+
+log(log_f, 
+    '%s File found:\n %s' % (
+        len(file_list), file_list), 
+    'error',
+    )
+
 for filename in file_list:  
     file_in = join(path_in, filename)
     file_out = join(path_out, filename)
     file_history = join(path_history, filename)
     
-    print "[INFO] 1. Start clean file: %s" % file_in
+    log(log_f, '1. Start clean file: %s' % file_in)
     f_in = open(file_in, 'rb')
     f_out = open(file_out, 'w')
     
@@ -78,17 +106,19 @@ for filename in file_list:
     f_in.close()    
     f_out.close()
 
-    print "[INFO] 2. End clean: %s" % file_in
+    log(log_f, '2. End clean: %s' % file_in)
     
     # Move file in history folder:    
-    os.rename(file_in, file_history) 
-    print "[INFO] 3. History: %s " % file_history
+    os.rename(file_in, file_history)
+    log(log_f, 'History: %s ' % file_history)
+    
 
 # Force load in bots:
-print "[INFO] Wait %s sec." % wait
+log(log_f, 'Wait %s sec.' % wait)
 time.sleep(wait)
-print "[INFO] Run schedule operation" 
-os.system(run_command)
-print "[INFO] End conversion" 
 
+log(log_f, 'Run schedule operation')
+os.system(run_command) # TODO how read return?
+
+log(log_f, 'End conversion')
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
