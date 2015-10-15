@@ -64,10 +64,13 @@ def pickle_write(data):
 def pickle_read():
     ''' Read pickle list
     '''
-    in_f = open(pickle_file, 'rb')
-    data = pickle.load(in_f) or []
-    in_f.close()
-    return data
+    try:
+        in_f = open(pickle_file, 'rb')
+        data = pickle.load(in_f)
+        in_f.close()
+        return data
+    except:
+        return []    
 
 def clean(line, replace='?'):
     ''' Remove all non ascii char over 127 bit
@@ -118,6 +121,8 @@ for filename in file_list:
     # Test here for log event (not in list comprehension)
     if filename in previous_order:
         log(log_f, '>> Jumper yet imported: %s' % filename)    
+        continue
+        
     file_in = join(path_in, filename)
     file_out = join(path_out, filename)
     file_history = join(path_history, filename)
