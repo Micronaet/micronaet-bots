@@ -117,12 +117,13 @@ file_list = [f for f in listdir(path_in) if isfile(join(path_in, f))]
 log(log_f, 
     '%s File found:\n %s' % (len(file_list), file_list), )
 
+total = 0
 for filename in file_list:
     # Test here for log event (not in list comprehension)
     if filename in previous_order:
         log(log_f, '>> Jumper yet imported: %s' % filename)    
         continue
-        
+
     file_in = join(path_in, filename)
     file_out = join(path_out, filename)
     file_history = join(path_history, filename)
@@ -151,13 +152,15 @@ for filename in file_list:
     previous_order.append(filename)    
     pickle_write(previous_order)
     log(log_f, '4. Save pickle file: %s' % pickle_file)
+    total += 1 # Order prepared    
 
-# Force load in bots:
-log(log_f, '>> Wait %s sec.' % wait)
-time.sleep(wait)
+if total:
+    # Force load in bots:
+    log(log_f, '>> Wait %s sec.' % wait)
+    time.sleep(wait)
 
-log(log_f, '>> Run schedule operation')
-os.system(run_command) # TODO how read return?
+    log(log_f, '>> Run schedule operation')
+    os.system(run_command) # TODO how read return?
 
 log(log_f, 'End conversion')
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
