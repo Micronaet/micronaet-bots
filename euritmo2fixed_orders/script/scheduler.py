@@ -20,6 +20,7 @@
 
 import os
 import time
+import datetime from datetime
 import ConfigParser
 import pickle
 from os import listdir
@@ -96,8 +97,9 @@ def log(f, message, type_message='info', echo=True):
     if type_message not in ('info', 'warning', 'error'):
         type_message = 'info'
         
-    message = '[%s] %s' % (
+    message = '[%s] %s %s' % (       
         type_message.upper(), 
+        datetime.now()
         message,
         )
     f.write('%s\n' % message)
