@@ -99,7 +99,7 @@ def log(f, message, type_message='info', echo=True):
         
     message = '[%s] %s %s' % (       
         type_message.upper(), 
-        datetime.now()
+        datetime.now(),
         message,
         )
     f.write('%s\n' % message)
