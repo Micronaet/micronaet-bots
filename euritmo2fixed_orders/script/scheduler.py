@@ -20,7 +20,7 @@
 
 import os
 import time
-import datetime from datetime
+from datetime import datetime
 import ConfigParser
 import pickle
 from os import listdir
