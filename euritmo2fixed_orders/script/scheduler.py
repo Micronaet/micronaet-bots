@@ -52,6 +52,7 @@ run_command = 'python %s --new' % join(
 
 log_f = open(log_file, 'a')
 
+
 # -----------------------------------------------------------------------------
 #                               Function:
 # -----------------------------------------------------------------------------
@@ -61,6 +62,7 @@ def pickle_write(data):
     out_f = open(pickle_file, 'wb')
     pickle.dump(data, out_f)
     out_f.close()
+
 
 def pickle_read():
     """ Read pickle list
@@ -72,6 +74,7 @@ def pickle_read():
         return data
     except:
         return []
+
 
 def clean(line, replace='?'):
     """ Remove all non ascii char over 127 bit
@@ -86,6 +89,7 @@ def clean(line, replace='?'):
         except:
             res += replace
     return res
+
 
 def log(f, message, type_message='info', echo=True):
     """ Log file on file and echo on screen
@@ -104,8 +108,9 @@ def log(f, message, type_message='info', echo=True):
         )
     f.write('%s\n' % message)
     if echo:
-        print message
+        print(message)
     return True
+
 
 # -----------------------------------------------------------------------------
 #                                     Code:
@@ -154,7 +159,7 @@ for filename in file_list:
     previous_order.append(filename)
     pickle_write(previous_order)
     log(log_f, '4. Save pickle file: %s' % pickle_file)
-    total += 1 # Order prepared
+    total += 1  # Order prepared
 
 if total:
     # Force load in bots:
@@ -162,6 +167,6 @@ if total:
     time.sleep(wait)
 
     log(log_f, '>> Run schedule operation')
-    os.system(run_command) # TODO how read return?
+    os.system(run_command)  # TODO how read return?
 
 log(log_f, 'End conversion')
