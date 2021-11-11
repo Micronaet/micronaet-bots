@@ -40,7 +40,7 @@ try:
     move_in_history = eval(config.get('EDI', 'move_in_history'))
 except:
     move_in_history = False
-        
+
 # Extra service file in local folder:
 log_file = 'log.txt'
 pickle_file = 'pickle.dat'
@@ -52,30 +52,30 @@ run_command = 'python %s --new' % join(
 
 log_f = open(log_file, 'a')
 
-# -----------------------------------------------------------------------------    
+# -----------------------------------------------------------------------------
 #                               Function:
-# -----------------------------------------------------------------------------    
+# -----------------------------------------------------------------------------
 def pickle_write(data):
-    ''' Write list data on pickle file
-    '''
+    """ Write list data on pickle file
+    """
     out_f = open(pickle_file, 'wb')
     pickle.dump(data, out_f)
     out_f.close()
 
 def pickle_read():
-    ''' Read pickle list
-    '''
+    """ Read pickle list
+    """
     try:
         in_f = open(pickle_file, 'rb')
         data = pickle.load(in_f)
         in_f.close()
         return data
     except:
-        return []    
+        return []
 
 def clean(line, replace='?'):
-    ''' Remove all non ascii char over 127 bit
-    '''
+    """ Remove all non ascii char over 127 bit
+    """
     res = ''
     for c in line:
         try:
@@ -85,20 +85,20 @@ def clean(line, replace='?'):
                 res += replace
         except:
             res += replace
-    return res 
+    return res
 
 def log(f, message, type_message='info', echo=True):
-    ''' Log file on file and echo on screen
+    """ Log file on file and echo on screen
         f: handle file
         message: Message text
-        type_message: info, warning, error 
+        type_message: info, warning, error
         echo: if print message on screen
-    '''
+    """
     if type_message not in ('info', 'warning', 'error'):
         type_message = 'info'
-        
-    message = '[%s] %s %s' % (       
-        type_message.upper(), 
+
+    message = '[%s] %s %s' % (
+        type_message.upper(),
         datetime.now(),
         message,
         )
@@ -116,34 +116,34 @@ log(log_f, '>> Read pickle list')
 
 file_list = [f for f in listdir(path_in) if isfile(join(path_in, f))]
 
-log(log_f, 
+log(log_f,
     '%s File found:\n %s' % (len(file_list), file_list), )
 
 total = 0
 for filename in file_list:
     # Test here for log event (not in list comprehension)
     if filename in previous_order:
-        log(log_f, '>> Jumper yet imported: %s' % filename)    
+        log(log_f, '>> Jumper yet imported: %s' % filename)
         continue
 
     file_in = join(path_in, filename)
     file_out = join(path_out, filename)
     file_history = join(path_history, filename)
-    
+
     log(log_f, '1. Start clean file: %s' % file_in)
     f_in = open(file_in, 'rb')
     f_out = open(file_out, 'w')
-    
+
     # Clean all lines in input file:
     for line in f_in:
         f_out.write(clean(line))
-    
-    f_in.close()    
+
+    f_in.close()
     f_out.close()
 
     log(log_f, '2. End clean: %s' % file_in)
-    
-    # Move file in history folder (if setted up):    
+
+    # Move file in history folder (if set up):
     if move_in_history:
         os.rename(file_in, file_history)
         log(log_f, '3. History: %s' % file_history)
@@ -151,10 +151,10 @@ for filename in file_list:
         log(log_f, '3. No History: %s' % file_history)
 
     # Add this order and save in pickle file:
-    previous_order.append(filename)    
+    previous_order.append(filename)
     pickle_write(previous_order)
     log(log_f, '4. Save pickle file: %s' % pickle_file)
-    total += 1 # Order prepared    
+    total += 1 # Order prepared
 
 if total:
     # Force load in bots:
@@ -165,4 +165,3 @@ if total:
     os.system(run_command) # TODO how read return?
 
 log(log_f, 'End conversion')
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
